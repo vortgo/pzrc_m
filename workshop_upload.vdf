@@ -13,7 +13,7 @@
     "title"            "PZRC Mod"
     "description"      "Standalone server-side toolkit for PZ B42 Multiplayer: starter kit crate, ration fridge, dynamic radio events, library, infinite generator, fuel pump refill, and a welcome note. All logic ships inside the mod — no manual file drops to ~/Zomboid/Lua/ required."
 
-    "changenote"       "Initial release (v0.1.0)"
+    "changenote"       "0.3.0 — Library: Place Item now blocked for library books. Abandoned vehicle event: fixed loot in PickUpTruck (TruckBedOpen) and removed police car from pool (incompatible with 10YrsVehicles burnt-shell swap). FuelPump: min capacity 5000 -> 500. Added experimental safe-zone vehicle-claim system, gated behind sandbox option EnableVehicleClaim (default OFF, won't affect prod)."
 
     "tags"
     {
