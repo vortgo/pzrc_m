@@ -152,4 +152,6 @@ local function onContainerUpdate(container)
 end
 Events.OnContainerUpdate.Add(function(container) pcall(onContainerUpdate, container) end)
 
-print("[PZRC_VehicleClaim] Client hooks installed")
+if PZRC_VehicleClaim.isEnabled() then
+    print("[PZRC_VehicleClaim] Client hooks installed")
+end

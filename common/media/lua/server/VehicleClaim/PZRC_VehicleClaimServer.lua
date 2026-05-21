@@ -100,7 +100,9 @@ local function onTick()
 end
 
 Events.OnTickEvenPaused.Add(onTick)
-log("VehicleClaim server initialized (radius=" ..
-    tostring(PZRC_Config.VEHICLE_CLAIM_RADIUS) ..
-    " around " .. tostring(PZRC_Config.BASE_X) .. "," ..
-    tostring(PZRC_Config.BASE_Y) .. ")")
+if PZRC_VehicleClaim.isEnabled() then
+    log("VehicleClaim server initialized (radius=" ..
+        tostring(PZRC_Config.VEHICLE_CLAIM_RADIUS) ..
+        " around " .. tostring(PZRC_Config.BASE_X) .. "," ..
+        tostring(PZRC_Config.BASE_Y) .. ")")
+end
