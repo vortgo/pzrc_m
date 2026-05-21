@@ -1,0 +1,181 @@
+VERSION = 1,
+
+option pzrc_m.BaseX
+{
+    type = integer,
+    min = 0,
+    max = 30000,
+    default = 9492,
+    page = PZRC,
+    translation = PZRC_BaseX,
+}
+
+option pzrc_m.BaseY
+{
+    type = integer,
+    min = 0,
+    max = 30000,
+    default = 11190,
+    page = PZRC,
+    translation = PZRC_BaseY,
+}
+
+option pzrc_m.VehicleClaimRadius
+{
+    type = integer,
+    min = 10,
+    max = 300,
+    default = 90,
+    page = PZRC,
+    translation = PZRC_VehicleClaimRadius,
+}
+
+option pzrc_m.RadioFrequencyKHz
+{
+    type = integer,
+    min = 200,
+    max = 300000,
+    default = 95200,
+    page = PZRC,
+    translation = PZRC_RadioFrequencyKHz,
+}
+
+option pzrc_m.StarterKitCooldownHours
+{
+    type = integer,
+    min = 1,
+    max = 168,
+    default = 24,
+    page = PZRC,
+    translation = PZRC_StarterKitCooldownHours,
+}
+
+option pzrc_m.FridgeRespawnIntervalGameDays
+{
+    type = integer,
+    min = 1,
+    max = 7,
+    default = 1,
+    page = PZRC,
+    translation = PZRC_FridgeRespawnIntervalGameDays,
+}
+
+option pzrc_m.EventAutoSpawnIntervalMinutes
+{
+    type = integer,
+    min = 1,
+    max = 1440,
+    default = 5,
+    page = PZRC,
+    translation = PZRC_EventAutoSpawnIntervalMinutes,
+}
+
+option pzrc_m.EventTTLHours
+{
+    type = double,
+    min = 0.01,
+    max = 24,
+    default = 0.10,
+    page = PZRC,
+    translation = PZRC_EventTTLHours,
+}
+
+option pzrc_m.EventVisitRadiusCells
+{
+    type = integer,
+    min = 10,
+    max = 200,
+    default = 60,
+    page = PZRC,
+    translation = PZRC_EventVisitRadiusCells,
+}
+
+option pzrc_m.EventBuildingSearchRadius
+{
+    type = integer,
+    min = 3,
+    max = 15,
+    default = 7,
+    page = PZRC,
+    translation = PZRC_EventBuildingSearchRadius,
+}
+
+option pzrc_m.EventSafeSquareRadius
+{
+    type = integer,
+    min = 5,
+    max = 50,
+    default = 20,
+    page = PZRC,
+    translation = PZRC_EventSafeSquareRadius,
+}
+
+option pzrc_m.EventOverlapRadiusCells
+{
+    type = integer,
+    min = 10,
+    max = 300,
+    default = 100,
+    page = PZRC,
+    translation = PZRC_EventOverlapRadiusCells,
+}
+
+option pzrc_m.EventVisitCheckIntervalSeconds
+{
+    type = integer,
+    min = 1,
+    max = 60,
+    default = 5,
+    page = PZRC,
+    translation = PZRC_EventVisitCheckIntervalSeconds,
+}
+
+option pzrc_m.EventPickAttempts
+{
+    type = integer,
+    min = 5,
+    max = 200,
+    default = 50,
+    page = PZRC,
+    translation = PZRC_EventPickAttempts,
+}
+
+option pzrc_m.EventCleanupRadiusCells
+{
+    type = integer,
+    min = 5,
+    max = 50,
+    default = 20,
+    page = PZRC,
+    translation = PZRC_EventCleanupRadiusCells,
+}
+
+option pzrc_m.LibraryRestockIntervalMinutes
+{
+    type = integer,
+    min = 1,
+    max = 60,
+    default = 5,
+    page = PZRC,
+    translation = PZRC_LibraryRestockIntervalMinutes,
+}
+
+option pzrc_m.InfiniteGenValidateIntervalSeconds
+{
+    type = integer,
+    min = 10,
+    max = 300,
+    default = 60,
+    page = PZRC,
+    translation = PZRC_InfiniteGenValidateIntervalSeconds,
+}
+
+option pzrc_m.FuelPumpMaxCapacity
+{
+    type = integer,
+    min = 500,
+    max = 50000,
+    default = 14000,
+    page = PZRC,
+    translation = PZRC_FuelPumpMaxCapacity,
+}

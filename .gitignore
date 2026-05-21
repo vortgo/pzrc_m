@@ -1,0 +1,24 @@
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*~
+*.bak
+*.swp
+*.swo
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# Python (tools/)
+__pycache__/
+*.pyc
+*.pyo
+
+# Local workshop staging copies (outside the repo, but just in case)
+Contents/
+
+# Build artifacts (generated dev variant — when we add tools/build_dev.py)
+build/
+dist/

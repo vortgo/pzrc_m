@@ -1,0 +1,46 @@
+title=PZRC Mod — Server Side Toolkit
+version=1
+tags=Build 42;Multiplayer;Server;Loot;Events
+visibility=public
+description=A single self-contained server-side mod for Project Zomboid Build 42 MP. Bundles a starter-kit crate, daily-ration fridge, dynamic radio channel with broadcast events, library bookshelves, infinite generators, fuel-pump refill, and a welcome note. Everything ships inside the mod — no manual file drops to ~/Zomboid/Lua/.
+
+[h1]Features[/h1]
+[list]
+[*][b]Welcome Note + Radio[/b] — every new character receives a note with the base coordinates and a walkie-talkie pre-tuned to the safe-zone radio channel.
+[*][b]Radio[/b] — dedicated DynamicRadioChannel (default 100.1 MHz, HamRadio category) with periodic broadcasts read from a shipped text file. /radio admin command for live announcements.
+[*][b]Dynamic Events[/b] — six event types (BuildingStash, ForestStash, AbandonedVehicle, Airdrop, Camp, HelicopterCrash). Auto-spawns at a configurable interval, broadcasts hint over the radio, cleans up after TTL.
+[*][b]Library[/b] — admin marks any container as a Library Shelf; the mod periodically restocks 24 skill books, deduplicates copies across shelves, and purges non-library items. Books are non-transferable between shelves, players, and the floor (drop = return).
+[*][b]Infinite Generator[/b] — admin toggle via right-click. The mod re-enforces fuel and condition periodically so survivors can't tamper with it.
+[*][b]Fuel Pump Refill[/b] — admin-only Refill / Drain on any fuel pump, capacity is sandbox-configurable.
+[*][b]Starter Kit Crate[/b] — admin-placeable supply crate that grants a one-time bag of items per character with a SteamID cooldown to block alt-character abuse.
+[*][b]Ration Fridge[/b] — admin-placeable fridge that gives a random tinned food once per in-game day per character.
+[*][b]Safe Zone Marker[/b] — cyan circle on the world map at the base coordinates.
+[/list]
+
+[h1]Sandbox Options (page "PZRC")[/h1]
+[list]
+[*]BaseX / BaseY — safe-zone coordinates (substituted into note text and radio broadcasts).
+[*]RadioFrequencyKHz — channel frequency in kHz.
+[*]StarterKitCooldownHours — real-time cooldown between starter kit claims on the same SteamID.
+[*]FridgeRespawnIntervalGameDays — game-days between ration claims per character.
+[*]EventAutoSpawnIntervalMinutes — real-time minutes between event auto-spawns.
+[*]EventTTLHours — real-time hours before an unvisited event despawns.
+[*]EventVisitRadiusCells / EventBuildingSearchRadius / EventSafeSquareRadius / EventOverlapRadiusCells / EventCleanupRadiusCells — event placement tuning.
+[*]LibraryRestockIntervalMinutes — library restock tick interval.
+[*]InfiniteGenValidateIntervalSeconds — how often infinite generators are re-enforced.
+[*]FuelPumpMaxCapacity — max fuel per pump refill.
+[/list]
+
+[h1]Admin Chat Commands[/h1]
+[list]
+[*]/event spawn <type> [x y] — force-spawn an event (types: buildingstash, foreststash, abandonedvehicle, airdrop, camp, helicoptercrash)
+[*]/event list — list active events
+[*]/event remove <id> — remove event by id
+[*]/event types — list registered event types
+[*]/radio <freq> <text> — broadcast on any dynamic channel
+[*]/resetkit <username> — reset a player's starter kit cooldown
+[*]/resetfridge <username> — reset a player's fridge cooldown
+[/list]
+
+[h1]Compatibility[/h1]
+This mod shares texture-pack and tile-def names ([i]planb[/i], [i]szcrate[/i]) with the legacy SafeZone server mod — do not install both at once. Vehicles use a unique [i]PZRCVehicles[/i] namespace so the vehicle scripts will not collide with anything else.

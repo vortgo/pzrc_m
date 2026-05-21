@@ -1,0 +1,35 @@
+{
+    "IGUI_PZRC_Menu": "PZRC M",
+    "IGUI_PZRC_Section_StarterKit": "Starter Kit",
+    "IGUI_PZRC_Section_Fridge": "Fridge",
+    "IGUI_PZRC_Section_InfGen": "Infinite Generator",
+    "IGUI_PZRC_Section_Library": "Library",
+
+    "IGUI_PZRC_NoteName": "Crumpled Note",
+    "IGUI_PZRC_NoteText": "If you're reading this, you're still alive. That's already a good sign. A handful of stubborn folks have dug in among the ruins and are still holding on. Not paradise, but somewhere you can catch your breath and meet the living. Coordinates: %1, %2. Find a radio - you can rig one from scraps - and tune it to %3 MHz. That's our channel. Listen for what's stirring out there and where it's worth heading before anyone else gets there. Move careful. These streets aren't for the living anymore.",
+
+    "IGUI_PZRC_StarterKit_Claim": "Claim Starter Kit",
+    "IGUI_PZRC_StarterKit_Place": "Place Supply Crate",
+    "IGUI_PZRC_StarterKit_Remove": "Remove Supply Crate",
+    "IGUI_PZRC_StarterKit_Received": "Starter kit received!",
+    "IGUI_PZRC_StarterKit_AlreadyReceived": "You already received the starter kit",
+    "IGUI_PZRC_StarterKit_Cooldown": "Next kit available in %1 hours",
+    "IGUI_PZRC_StarterKit_Rotate": "Rotate Supply Crate",
+    "IGUI_PZRC_StarterKit_Rotated": "Crate rotated",
+
+    "IGUI_PZRC_Fridge_Claim": "Take Daily Ration",
+    "IGUI_PZRC_Fridge_Place": "Place Fridge",
+    "IGUI_PZRC_Fridge_Remove": "Remove Fridge",
+    "IGUI_PZRC_Fridge_Rotate": "Rotate Fridge",
+    "IGUI_PZRC_Fridge_Rotated": "Fridge rotated",
+    "IGUI_PZRC_Fridge_Received": "Daily ration received!",
+    "IGUI_PZRC_Fridge_Cooldown": "Ration already taken today. Come back tomorrow.",
+    "IGUI_PZRC_Fridge_CooldownDays": "Next ration in %1 game day(s)",
+    "IGUI_PZRC_Fridge_Error": "Fridge is empty",
+
+    "IGUI_PZRC_InfGen_AdminOnly": "Only admins can take infinite generators.",
+    "IGUI_PZRC_InfGen_SetInfinite": "Generator set to INFINITE fuel.",
+    "IGUI_PZRC_InfGen_SetNormal": "Generator set to normal mode.",
+    "IGUI_PZRC_InfGen_MakeInfinite": "Make Infinite",
+    "IGUI_PZRC_InfGen_MakeNormal": "Make Normal"
+}

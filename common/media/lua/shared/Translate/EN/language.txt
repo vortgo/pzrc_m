@@ -1,0 +1,10 @@
+VERSION = 1,
+text = English,
+
+IGUI_PZRC_Event_1 = "Reports of a supply stash hidden in a building nearby. Coordinates: %1, %2.",
+IGUI_PZRC_Event_2 = "A body was found with supplies. Location: %1, %2. Approach with caution.",
+IGUI_PZRC_Event_3 = "Scouts report a supply crate in the woods near %1, %2.",
+IGUI_PZRC_Event_4 = "Airdrop incoming! Estimated landing zone: %1, %2.",
+IGUI_PZRC_Event_5 = "An abandoned vehicle was spotted near %1, %2. Could have useful parts.",
+IGUI_PZRC_Event_6 = "A survivor camp was found near %1, %2. Appears deserted.",
+IGUI_PZRC_Event_7 = "Helicopter crash site detected near %1, %2! Military cargo on board. Extremely dangerous area!",

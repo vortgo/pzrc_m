@@ -1,0 +1,438 @@
+-- =========================================================================
+-- PZRC Mod — конфиги для редактирования под конкретный сервер
+-- =========================================================================
+-- Это срез настроек, которые обычно правят на стороне сервера:
+--   1. Содержимое стартового набора (ящик)
+--   2. Состав пайка из холодильника
+--   3. Количество зомби, спавнящихся вокруг каждого типа события
+--   4. Лут каждого типа события (chance / min / max)
+--
+-- После редактирования верните этот файл целиком — куски будут вставлены
+-- обратно в:
+--   common/media/lua/server/StarterKit/PZRC_StarterKitConfig.lua
+--   common/media/lua/server/Fridge/PZRC_FridgeConfig.lua
+--   common/media/lua/server/Events/PZRC_EventConfig.lua
+-- =========================================================================
+
+
+-- =========================================================================
+-- 1. СТАРТЕР КИТ
+-- =========================================================================
+-- Поля:
+--   item       — full type предмета ("Base.X", "Modname.X")
+--   count      — сколько штук
+--   container  — "bag" значит положить внутрь рюкзака (если он уже выдан выше
+--                по списку). Без поля — в основной инвентарь.
+-- Если в списке есть рюкзак — поставьте его выше предметов, которые надо
+-- положить внутрь.
+-- =========================================================================
+
+PZRC_StarterKitConfig.items = {
+    { item = "Base.Bag_Schoolbag",       count = 1 },
+    { item = "Base.BeerBottle",          count = 1 },
+    { item = "Base.BaseballBat_Crafted", count = 1 },
+    { item = "Base.Apple",               count = 2 },
+    { item = "Base.Lighter",             count = 1 },
+    { item = "Base.Hammer",              count = 1, container = "bag" },
+    { item = "Base.Saw",                 count = 1, container = "bag" },
+    { item = "Base.TinnedBeans",         count = 2, container = "bag" },
+    { item = "Base.HuntingKnife",        count = 1, container = "bag" },
+    { item = "Base.Trousers_CamoGreen",  count = 1 },
+    { item = "Base.Tshirt_CamoGreen",    count = 1 },
+    { item = "Base.Hat_Army",            count = 1 },
+}
+
+
+-- =========================================================================
+-- 2. ПАЁК ХОЛОДИЛЬНИКА
+-- =========================================================================
+-- Один случайный предмет из списка выдаётся за раз
+-- (кулдаун = 1 игровой день по умолчанию).
+-- Просто список full-type'ов.
+-- =========================================================================
+
+PZRC_FridgeConfig.rationItems = {
+    "Base.TinnedBeans",
+    "Base.TinnedSoup",
+    "Base.TinnedSardines",
+}
+
+
+-- =========================================================================
+-- 3. КОЛИЧЕСТВО ЗОМБИ ВОКРУГ СОБЫТИЯ
+-- =========================================================================
+-- min / max — фактическое число вызывается через ZombRand(min, max+1)
+-- =========================================================================
+
+PZRC_EventConfig.Zombies = {
+    buildingstash    = { min = 3,  max = 10  },
+    foreststash      = { min = 3,  max = 15  },
+    airdrop          = { min = 15, max = 20  },
+    abandonedvehicle = { min = 5,  max = 10  },
+    camp             = { min = 10, max = 15  },
+    helicoptercrash  = { min = 80, max = 200 },
+}
+
+
+-- =========================================================================
+-- 4. ЛУТ СОБЫТИЙ
+-- =========================================================================
+-- Каждая строка лут-таблицы — один независимый roll:
+--   chance — вероятность (0.0 .. 1.0), что эта позиция выпадет вообще
+--   min/max — если выпала, ZombRand(min, max+1) штук кладётся в контейнер
+-- =========================================================================
+
+PZRC_EventConfig.Loot = {
+    buildingstash = {
+        { item = "Base.BlowTorch",            chance = 0.10, min = 1, max = 1 },
+        { item = "Base.WeldingMask",          chance = 0.10, min = 1, max = 1 },
+        { item = "Base.Katana",               chance = 0.02, min = 1, max = 1 },
+        { item = "Base.Sledgehammer",         chance = 0.05, min = 1, max = 1 },
+        { item = "Base.Antibiotics",          chance = 0.15, min = 1, max = 2 },
+        { item = "Base.Pills",                chance = 0.25, min = 2, max = 3 },
+        { item = "Base.SutureNeedle",         chance = 0.20, min = 2, max = 6 },
+        { item = "Base.Tweezers",             chance = 0.10, min = 1, max = 2 },
+        { item = "Base.Disinfectant",         chance = 0.20, min = 1, max = 2 },
+        { item = "Base.Bag_BigHikingBag",     chance = 0.15, min = 1, max = 1 },
+        { item = "Base.Bag_ShotgunDblBag",    chance = 0.15, min = 1, max = 1 },
+        { item = "Base.Bag_ALICEpack",        chance = 0.10, min = 1, max = 1 },
+        { item = "Base.Crowbar",              chance = 0.10, min = 1, max = 1 },
+        { item = "Base.CannedCornedBeef",     chance = 0.20, min = 1, max = 4 },
+        { item = "Base.Lighter",              chance = 0.20, min = 1, max = 1 },
+        { item = "Base.Twine",                chance = 0.15, min = 2, max = 2 },
+        { item = "Base.Thread",               chance = 0.23, min = 1, max = 4 },
+        { item = "Base.GunPowder",            chance = 0.07, min = 1, max = 1 },
+        { item = "Base.Wire",                 chance = 0.15, min = 2, max = 4 },
+        { item = "Base.Glue",                 chance = 0.15, min = 2, max = 4 },
+        { item = "Base.Woodglue",             chance = 0.15, min = 2, max = 4 },
+        { item = "Base.BallPeenHammerForged", chance = 0.10, min = 1, max = 1 },
+        { item = "Base.Needle",               chance = 0.17, min = 1, max = 2 },
+        { item = "Base.GardenFork",           chance = 0.17, min = 1, max = 1 },
+        { item = "Base.Axe",                  chance = 0.08, min = 1, max = 1 },
+        { item = "Base.WoodAxe",              chance = 0.10, min = 1, max = 1 },
+        { item = "Base.Saw",                  chance = 0.15, min = 1, max = 1 },
+        { item = "Base.BookFarming1",         chance = 0.12, min = 1, max = 1 },
+        { item = "Base.BookFarming2",         chance = 0.12, min = 1, max = 1 },
+        { item = "Base.BookHusbandry1",       chance = 0.12, min = 1, max = 1 },
+        { item = "Base.BookBlacksmith1",      chance = 0.12, min = 1, max = 1 },
+        { item = "Base.BookBlacksmith3",      chance = 0.12, min = 1, max = 1 },
+        { item = "Base.BookCarpentry1",       chance = 0.12, min = 1, max = 1 },
+        { item = "Base.BookCarpentry4",       chance = 0.12, min = 1, max = 1 },
+        { item = "Base.BookElectrician1",     chance = 0.12, min = 1, max = 1 },
+        { item = "Base.BookElectrician2",     chance = 0.12, min = 1, max = 1 },
+        { item = "Base.BookFirstAid1",        chance = 0.12, min = 1, max = 1 },
+        { item = "Base.BookFirstAid2",        chance = 0.12, min = 1, max = 1 },
+        { item = "Base.BookFirstAid3",        chance = 0.12, min = 1, max = 1 },
+        { item = "Base.BookFirstAid4",        chance = 0.12, min = 1, max = 1 },
+        { item = "Base.BookFishing1",         chance = 0.12, min = 1, max = 1 },
+        { item = "Base.BookFishing2",         chance = 0.12, min = 1, max = 1 },
+        { item = "Base.BookFishing3",         chance = 0.12, min = 1, max = 1 },
+        { item = "Base.BookForaging1",        chance = 0.12, min = 1, max = 1 },
+        { item = "Base.BookForaging2",        chance = 0.12, min = 1, max = 1 },
+        { item = "Base.BookForaging3",        chance = 0.12, min = 1, max = 1 },
+        { item = "Base.BookMaintenance1",     chance = 0.12, min = 1, max = 1 },
+        { item = "Base.BookMaintenance2",     chance = 0.12, min = 1, max = 1 },
+        { item = "Base.BookMetalWelding1",    chance = 0.12, min = 1, max = 1 },
+        { item = "Base.BookMetalWelding2",    chance = 0.12, min = 1, max = 1 },
+        { item = "Base.BookMetalWelding3",    chance = 0.12, min = 1, max = 1 },
+        { item = "Base.SmithingMag8",         chance = 0.12, min = 1, max = 1 },
+        { item = "Base.TailoringMag1",        chance = 0.12, min = 1, max = 1 },
+        { item = "Base.TailoringMag5",        chance = 0.12, min = 1, max = 1 },
+        { item = "Base.FarmingMag7",          chance = 0.12, min = 1, max = 1 },
+        { item = "Base.TailoringMag10",       chance = 0.12, min = 1, max = 1 },
+        { item = "Base.MechanicMag3",         chance = 0.12, min = 1, max = 1 },
+        { item = "Base.MechanicMag2",         chance = 0.12, min = 1, max = 1 },
+        { item = "Base.MechanicMag1",         chance = 0.12, min = 1, max = 1 },
+        { item = "Base.CannedChili",          chance = 0.20, min = 1, max = 2 },
+        { item = "Base.CannedPeas",           chance = 0.20, min = 1, max = 2 },
+        { item = "Base.CannedPotato2",        chance = 0.20, min = 1, max = 2 },
+        { item = "Base.TunaTin",              chance = 0.20, min = 1, max = 2 },
+        { item = "Base.TinnedSoup",           chance = 0.20, min = 1, max = 2 },
+        { item = "Base.CannedEggplant",       chance = 0.20, min = 1, max = 2 },
+        { item = "Base.CannedRoe",            chance = 0.20, min = 1, max = 2 },
+        { item = "Base.CannedBroccoli",       chance = 0.20, min = 1, max = 2 },
+        { item = "Base.SugarBrown",           chance = 0.20, min = 1, max = 2 },
+        { item = "Base.Marinara",             chance = 0.20, min = 1, max = 2 },
+        { item = "Base.Crisps",               chance = 0.20, min = 1, max = 2 },
+        { item = "Base.Aerosolbomb",          chance = 0.05, min = 1, max = 1 },
+        { item = "Base.FlameTrap",            chance = 0.05, min = 1, max = 1 },
+        { item = "Base.Molotov",              chance = 0.05, min = 1, max = 1 },
+        { item = "Base.Vest_BulletCivilian",  chance = 0.05, min = 1, max = 1 },
+        { item = "Base.Tshirt_HuntingCamo",   chance = 0.15, min = 1, max = 1 },
+        { item = "Base.Hoodie_HuntingCamo_UP", chance = 0.15, min = 1, max = 1 },
+        { item = "Base.Bullets357Box",        chance = 0.10, min = 1, max = 1 },
+        { item = "Base.Bullets38Box",         chance = 0.10, min = 1, max = 1 },
+        { item = "Base.Bullets44Box",         chance = 0.10, min = 1, max = 1 },
+        { item = "Base.Bullets45Box",         chance = 0.10, min = 1, max = 1 },
+        { item = "Base.Bullets9mmBox",        chance = 0.10, min = 1, max = 1 },
+    },
+
+    foreststash = {
+        { item = "Base.Machete",              chance = 0.10, min = 1, max = 1 },
+        { item = "Base.BaseballBat_RailSpike", chance = 0.10, min = 1, max = 1 },
+        { item = "Base.HandAxe_Old",          chance = 0.10, min = 1, max = 1 },
+        { item = "Base.PickAxe",              chance = 0.10, min = 1, max = 1 },
+        { item = "Base.WoodAxe",              chance = 0.10, min = 1, max = 1 },
+        { item = "Base.Shovel2",              chance = 0.10, min = 1, max = 1 },
+        { item = "Base.PipeWrench",           chance = 0.10, min = 1, max = 1 },
+        { item = "Base.Katana",               chance = 0.04, min = 1, max = 1 },
+        { item = "Base.Sword",                chance = 0.05, min = 1, max = 1 },
+        { item = "Base.Screwdriver",          chance = 0.15, min = 1, max = 1 },
+        { item = "Base.SpearScrapKnife",      chance = 0.15, min = 1, max = 1 },
+        { item = "Base.Pistol3",              chance = 0.07, min = 1, max = 1 },
+        { item = "Base.Pistol2",              chance = 0.07, min = 1, max = 1 },
+        { item = "Base.Pistol",               chance = 0.07, min = 1, max = 1 },
+        { item = "Base.JS14_Rifle",           chance = 0.06, min = 1, max = 1 },
+        { item = "Base.L94_Rifle",            chance = 0.06, min = 1, max = 1 },
+        { item = "Base.HuntingRifle",         chance = 0.06, min = 1, max = 1 },
+        { item = "Base.AmmoStraps",           chance = 0.10, min = 1, max = 1 },
+        { item = "Base.BookAiming1",          chance = 0.12, min = 1, max = 1 },
+        { item = "Base.BookAiming2",          chance = 0.12, min = 1, max = 1 },
+        { item = "Base.BookAiming3",          chance = 0.12, min = 1, max = 1 },
+        { item = "Base.BookReloading1",       chance = 0.12, min = 1, max = 1 },
+        { item = "Base.BookReloading2",       chance = 0.12, min = 1, max = 1 },
+        { item = "Base.BookReloading3",       chance = 0.12, min = 1, max = 1 },
+        { item = "Base.ElectronicsMag4",      chance = 0.12, min = 1, max = 1 },
+        { item = "Base.FarmingMag1",          chance = 0.12, min = 1, max = 1 },
+        { item = "Base.FarmingMag2",          chance = 0.12, min = 1, max = 1 },
+        { item = "Base.TailoringMag2",        chance = 0.12, min = 1, max = 1 },
+        { item = "Base.HuntingMag2",          chance = 0.12, min = 1, max = 1 },
+        { item = "Base.WeaponMag1",           chance = 0.12, min = 1, max = 1 },
+        { item = "Base.MetalworkMag3",        chance = 0.12, min = 1, max = 1 },
+        { item = "Base.HuntingMag3",          chance = 0.12, min = 1, max = 1 },
+        { item = "Base.Magazine_Rich",        chance = 0.12, min = 1, max = 1 },
+        { item = "Base.Aluminum",             chance = 0.12, min = 1, max = 1 },
+        { item = "Base.FishingLine",          chance = 0.12, min = 1, max = 1 },
+        { item = "Base.Thread",               chance = 0.12, min = 1, max = 1 },
+        { item = "Base.NailsBox",             chance = 0.22, min = 1, max = 2 },
+        { item = "Base.WeldingRods",          chance = 0.22, min = 1, max = 2 },
+        { item = "Base.Hat_HockeyMask_Silver", chance = 0.12, min = 1, max = 1 },
+        { item = "Base.BatteryBox",           chance = 0.12, min = 1, max = 1 },
+        { item = "Base.Bag_Sheriff",          chance = 0.12, min = 1, max = 1 },
+        { item = "Base.Bag_MedicalBag",       chance = 0.12, min = 1, max = 1 },
+        { item = "Base.Bag_ALICE_BeltSus",    chance = 0.12, min = 1, max = 1 },
+        { item = "Base.TrapCage",             chance = 0.12, min = 1, max = 1 },
+        { item = "Base.TrapStick",            chance = 0.12, min = 1, max = 1 },
+        { item = "Base.Bullets357Box",        chance = 0.10, min = 1, max = 1 },
+        { item = "Base.Bullets38Box",         chance = 0.10, min = 1, max = 1 },
+        { item = "Base.Bullets44Box",         chance = 0.10, min = 1, max = 1 },
+        { item = "Base.Bullets45Box",         chance = 0.10, min = 1, max = 1 },
+        { item = "Base.TinnedSoup",           chance = 0.20, min = 1, max = 2 },
+        { item = "Base.CannedEggplant",       chance = 0.20, min = 1, max = 2 },
+        { item = "Base.CannedRoe",            chance = 0.20, min = 1, max = 2 },
+        { item = "Base.CannedBroccoli",       chance = 0.20, min = 1, max = 2 },
+    },
+
+    airdrop = {
+        { item = "Base.Pistol3",              chance = 0.25, min = 1, max = 2 },
+        { item = "Base.Pistol2",              chance = 0.25, min = 1, max = 2 },
+        { item = "Base.Pistol",               chance = 0.25, min = 1, max = 2 },
+        { item = "Base.Revolver_CapGun",      chance = 0.50, min = 1, max = 1 },
+        { item = "Base.DoubleBarrelShotgun",  chance = 0.20, min = 1, max = 1 },
+        { item = "Base.Shotgun",              chance = 0.20, min = 1, max = 1 },
+        { item = "Base.JS3T_Shotgun",         chance = 0.20, min = 1, max = 1 },
+        { item = "Base.ShotgunSawnoff",       chance = 0.20, min = 1, max = 1 },
+        { item = "Base.JS14_Rifle",           chance = 0.10, min = 1, max = 1 },
+        { item = "Base.L92_Carbine",          chance = 0.10, min = 1, max = 1 },
+        { item = "Base.L94_Rifle",            chance = 0.10, min = 1, max = 1 },
+        { item = "Base.AssaultRifle",         chance = 0.10, min = 1, max = 1 },
+        { item = "Base.AssaultRifle2",        chance = 0.10, min = 1, max = 1 },
+        { item = "Base.VarmintRifle",         chance = 0.10, min = 1, max = 1 },
+        { item = "Base.HuntingRifle",         chance = 0.10, min = 1, max = 1 },
+        { item = "Base.MSR7T_Rifle",          chance = 0.10, min = 1, max = 1 },
+        { item = "Base.TrapperCarbine",       chance = 0.10, min = 1, max = 1 },
+        { item = "Base.Rifle_CapGun",         chance = 0.50, min = 1, max = 1 },
+        { item = "Base.44Clip",               chance = 0.20, min = 1, max = 3 },
+        { item = "Base.JS14_Clip",            chance = 0.20, min = 1, max = 3 },
+        { item = "Base.556Clip",              chance = 0.20, min = 1, max = 3 },
+        { item = "Base.M14Clip",              chance = 0.20, min = 1, max = 3 },
+        { item = "Base.9mmClip",              chance = 0.20, min = 1, max = 3 },
+        { item = "Base.3030Carton",           chance = 0.20, min = 1, max = 2 },
+        { item = "Base.Bullets357Carton",     chance = 0.20, min = 1, max = 2 },
+        { item = "Base.Bullets38Carton",      chance = 0.20, min = 1, max = 2 },
+        { item = "Base.Bullets44Carton",      chance = 0.20, min = 1, max = 2 },
+        { item = "Base.Bullets45Carton",      chance = 0.20, min = 1, max = 2 },
+        { item = "Base.ShotgunShellsCarton",  chance = 0.20, min = 1, max = 2 },
+        { item = "Base.556Carton",            chance = 0.20, min = 1, max = 2 },
+        { item = "Base.308Carton",            chance = 0.20, min = 1, max = 2 },
+        { item = "Base.Bullets9mmCarton",     chance = 0.20, min = 1, max = 2 },
+        { item = "Base.AmmoStraps",           chance = 0.20, min = 1, max = 1 },
+        { item = "Base.ChokeTubeFull",        chance = 0.20, min = 1, max = 1 },
+        { item = "Base.ChokeTubeImproved",    chance = 0.20, min = 1, max = 1 },
+        { item = "Base.GunLight",             chance = 0.20, min = 1, max = 1 },
+        { item = "Base.Laser",                chance = 0.20, min = 1, max = 1 },
+        { item = "Base.RecoilPad",            chance = 0.20, min = 1, max = 1 },
+        { item = "Base.RedDot",               chance = 0.20, min = 1, max = 1 },
+        { item = "Base.TritiumSights",        chance = 0.20, min = 1, max = 1 },
+        { item = "Base.x2Scope",              chance = 0.20, min = 1, max = 1 },
+        { item = "Base.x4Scope",              chance = 0.20, min = 1, max = 1 },
+        { item = "Base.x8Scope",              chance = 0.20, min = 1, max = 1 },
+        { item = "Base.Bag_ALICEpack",        chance = 0.20, min = 1, max = 1 },
+        { item = "Base.Bag_ALICEpack_Army",   chance = 0.20, min = 1, max = 1 },
+        { item = "Base.Bag_ALICEpack_DesertCamo", chance = 0.20, min = 1, max = 1 },
+        { item = "Base.Bag_SurvivorBag",      chance = 0.20, min = 1, max = 1 },
+        { item = "Base.Bag_ALICE_BeltSus",    chance = 0.20, min = 1, max = 1 },
+        { item = "Base.Bag_ALICE_BeltSus_Camo", chance = 0.20, min = 1, max = 1 },
+        { item = "Base.Bag_ALICE_BeltSus_Green", chance = 0.20, min = 1, max = 1 },
+    },
+
+    abandonedvehicle = {
+        { item = "Base.EngineParts",          chance = 0.20, min = 1, max = 5 },
+        { item = "Base.PetrolCan",            chance = 0.20, min = 1, max = 2 },
+        { item = "Base.WaterBottlePetrol",    chance = 0.50, min = 1, max = 2 },
+        { item = "Base.CarBattery1",          chance = 0.20, min = 1, max = 1 },
+        { item = "Base.CarBattery2",          chance = 0.20, min = 1, max = 1 },
+        { item = "Base.CarBattery3",          chance = 0.20, min = 1, max = 1 },
+        { item = "Base.Wrench",               chance = 0.50, min = 1, max = 1 },
+        { item = "Base.Screwdriver",          chance = 0.50, min = 1, max = 1 },
+        { item = "Base.TinnedBeans",          chance = 0.30, min = 1, max = 2 },
+        { item = "Base.WaterBottle",          chance = 0.30, min = 1, max = 1 },
+        { item = "Base.MechanicMag3",         chance = 0.12, min = 1, max = 1 },
+        { item = "Base.MechanicMag2",         chance = 0.12, min = 1, max = 1 },
+        { item = "Base.MechanicMag1",         chance = 0.12, min = 1, max = 1 },
+        { item = "Base.CannedChili",          chance = 0.20, min = 1, max = 2 },
+        { item = "Base.CannedPeas",           chance = 0.20, min = 1, max = 2 },
+        { item = "Base.CannedPotato2",        chance = 0.20, min = 1, max = 2 },
+        { item = "Base.TunaTin",              chance = 0.20, min = 1, max = 2 },
+        { item = "Base.TinnedSoup",           chance = 0.20, min = 1, max = 2 },
+        { item = "Base.CannedEggplant",       chance = 0.20, min = 1, max = 2 },
+        { item = "Base.CannedRoe",            chance = 0.20, min = 1, max = 2 },
+        { item = "Base.CannedBroccoli",       chance = 0.20, min = 1, max = 2 },
+        { item = "Base.SugarBrown",           chance = 0.20, min = 1, max = 2 },
+        { item = "Base.Marinara",             chance = 0.20, min = 1, max = 2 },
+        { item = "Base.Bag_FannyPackFront",   chance = 0.20, min = 1, max = 1 },
+        { item = "Base.Cooler_Beer",          chance = 0.20, min = 1, max = 1 },
+        { item = "Base.BeerBottle",           chance = 0.80, min = 1, max = 5 },
+        { item = "Base.WalkieTalkie4",        chance = 0.80, min = 1, max = 1 },
+        { item = "Base.Lighter",              chance = 0.60, min = 1, max = 1 },
+        { item = "Base.WaterPurificationTablets", chance = 0.10, min = 1, max = 1 },
+        { item = "Base.Scissors",             chance = 0.10, min = 1, max = 1 },
+    },
+
+    camp = {
+        -- Еда и вода
+        { item = "Base.TinnedBeans",          chance = 0.50, min = 1, max = 3 },
+        { item = "Base.CannedCornedBeef",     chance = 0.40, min = 1, max = 2 },
+        { item = "Base.CannedChili",          chance = 0.40, min = 1, max = 2 },
+        { item = "Base.TunaTin",              chance = 0.30, min = 1, max = 2 },
+        { item = "Base.TinnedSoup",           chance = 0.40, min = 1, max = 2 },
+        { item = "Base.CannedPeas",           chance = 0.30, min = 1, max = 2 },
+        { item = "Base.Crisps",               chance = 0.30, min = 1, max = 2 },
+        { item = "Base.Cereal",               chance = 0.20, min = 1, max = 1 },
+        { item = "Base.WaterBottle",          chance = 0.60, min = 1, max = 3 },
+        { item = "Base.BeerBottle",           chance = 0.40, min = 1, max = 3 },
+        { item = "Base.WhiskeyFull",          chance = 0.15, min = 1, max = 1 },
+        -- Готовка
+        { item = "Base.CanOpener",            chance = 0.40, min = 1, max = 1 },
+        { item = "Base.CookingPot",           chance = 0.25, min = 1, max = 1 },
+        { item = "Base.GridlePan",            chance = 0.25, min = 1, max = 1 },
+        { item = "Base.Lighter",              chance = 0.50, min = 1, max = 1 },
+        { item = "Base.Matches",              chance = 0.40, min = 1, max = 1 },
+        -- Медикаменты
+        { item = "Base.Bandage",              chance = 0.40, min = 1, max = 3 },
+        { item = "Base.AlcoholBandage",       chance = 0.25, min = 1, max = 2 },
+        { item = "Base.Disinfectant",         chance = 0.20, min = 1, max = 1 },
+        { item = "Base.Pills",                chance = 0.20, min = 1, max = 2 },
+        { item = "Base.SutureNeedle",         chance = 0.15, min = 1, max = 2 },
+        -- Инструменты
+        { item = "Base.HuntingKnife",         chance = 0.30, min = 1, max = 1 },
+        { item = "Base.HandAxe_Old",          chance = 0.20, min = 1, max = 1 },
+        { item = "Base.Torch",                chance = 0.40, min = 1, max = 1 },
+        { item = "Base.Rope",                 chance = 0.30, min = 1, max = 1 },
+        { item = "Base.Twine",                chance = 0.30, min = 1, max = 2 },
+        { item = "Base.Tarp",                 chance = 0.20, min = 1, max = 1 },
+        { item = "Base.TrapCage",             chance = 0.15, min = 1, max = 1 },
+        { item = "Base.TrapStick",            chance = 0.15, min = 1, max = 1 },
+        { item = "Base.FishingRod",           chance = 0.15, min = 1, max = 1 },
+        { item = "Base.FishingLine",          chance = 0.20, min = 1, max = 1 },
+        -- Одежда
+        { item = "Base.Poncho_Yellow",        chance = 0.15, min = 1, max = 1 },
+        { item = "Base.Hat_BeanieWinter",     chance = 0.20, min = 1, max = 1 },
+        { item = "Base.Gloves_LeatherGloves", chance = 0.20, min = 1, max = 1 },
+        -- Рюкзак
+        { item = "Base.Bag_DuffelBag",        chance = 0.20, min = 1, max = 1 },
+        { item = "Base.Bag_BigHikingBag",     chance = 0.10, min = 1, max = 1 },
+        -- Разное
+        { item = "Base.Notebook",             chance = 0.30, min = 1, max = 1 },
+        { item = "Base.Pen",                  chance = 0.30, min = 1, max = 1 },
+        { item = "Base.WalkieTalkie4",        chance = 0.15, min = 1, max = 1 },
+        { item = "Base.Battery",              chance = 0.25, min = 1, max = 2 },
+    },
+
+    helicoptercrash = {
+        -- Оружие
+        { item = "Base.AssaultRifle",         chance = 0.40, min = 1, max = 2 },
+        { item = "Base.AssaultRifle2",        chance = 0.40, min = 1, max = 2 },
+        { item = "Base.MSR7T_Rifle",          chance = 0.30, min = 1, max = 1 },
+        { item = "Base.L92_Carbine",          chance = 0.30, min = 1, max = 1 },
+        { item = "Base.Shotgun",              chance = 0.25, min = 1, max = 1 },
+        { item = "Base.JS3T_Shotgun",         chance = 0.25, min = 1, max = 1 },
+        { item = "Base.Pistol",               chance = 0.35, min = 1, max = 2 },
+        { item = "Base.Pistol2",              chance = 0.35, min = 1, max = 2 },
+        { item = "Base.Pistol3",              chance = 0.35, min = 1, max = 2 },
+        -- Обоймы
+        { item = "Base.556Clip",              chance = 0.50, min = 2, max = 5 },
+        { item = "Base.M14Clip",              chance = 0.50, min = 2, max = 5 },
+        { item = "Base.9mmClip",              chance = 0.50, min = 2, max = 5 },
+        { item = "Base.44Clip",               chance = 0.40, min = 1, max = 3 },
+        { item = "Base.JS14_Clip",            chance = 0.40, min = 1, max = 3 },
+        -- Патроны
+        { item = "Base.556Carton",            chance = 0.50, min = 1, max = 3 },
+        { item = "Base.308Carton",            chance = 0.50, min = 1, max = 3 },
+        { item = "Base.Bullets9mmCarton",     chance = 0.50, min = 1, max = 3 },
+        { item = "Base.ShotgunShellsCarton",  chance = 0.40, min = 1, max = 2 },
+        { item = "Base.Bullets45Carton",      chance = 0.40, min = 1, max = 2 },
+        { item = "Base.Bullets357Carton",     chance = 0.30, min = 1, max = 2 },
+        -- Обвесы
+        { item = "Base.x4Scope",              chance = 0.35, min = 1, max = 1 },
+        { item = "Base.x8Scope",              chance = 0.25, min = 1, max = 1 },
+        { item = "Base.RedDot",               chance = 0.35, min = 1, max = 1 },
+        { item = "Base.Laser",                chance = 0.30, min = 1, max = 1 },
+        { item = "Base.GunLight",             chance = 0.30, min = 1, max = 1 },
+        { item = "Base.TritiumSights",        chance = 0.25, min = 1, max = 1 },
+        { item = "Base.RecoilPad",            chance = 0.30, min = 1, max = 1 },
+        { item = "Base.AmmoStraps",           chance = 0.30, min = 1, max = 1 },
+        { item = "Base.ChokeTubeFull",        chance = 0.25, min = 1, max = 1 },
+        -- Медицина
+        { item = "Base.Antibiotics",          chance = 0.40, min = 1, max = 3 },
+        { item = "Base.SutureNeedle",         chance = 0.50, min = 2, max = 6 },
+        { item = "Base.SutureNeedleHolder",   chance = 0.30, min = 1, max = 1 },
+        { item = "Base.Disinfectant",         chance = 0.40, min = 1, max = 2 },
+        { item = "Base.Splint",               chance = 0.30, min = 1, max = 2 },
+        { item = "Base.Pills",                chance = 0.40, min = 2, max = 4 },
+        { item = "Base.Tweezers",             chance = 0.25, min = 1, max = 1 },
+        { item = "Base.Scalpel",              chance = 0.20, min = 1, max = 1 },
+        -- Еда
+        { item = "Base.WaterRationCan",       chance = 0.70, min = 2, max = 6 },
+        { item = "Base.WaterBottle",          chance = 0.60, min = 2, max = 4 },
+        { item = "Base.WaterPurificationTablets", chance = 0.30, min = 1, max = 2 },
+        { item = "Base.CannedCornedBeef",     chance = 0.40, min = 1, max = 3 },
+        { item = "Base.TinnedBeans",          chance = 0.40, min = 1, max = 3 },
+        -- Военное снаряжение
+        { item = "Base.Vest_BulletArmy",      chance = 0.30, min = 1, max = 1 },
+        { item = "Base.Vest_BulletPolice",    chance = 0.15, min = 1, max = 1 },
+        { item = "Base.Hat_Army",             chance = 0.35, min = 1, max = 1 },
+        { item = "Base.Hat_RiotHelmet",       chance = 0.15, min = 1, max = 1 },
+        { item = "Base.Bag_ALICEpack_Army",   chance = 0.35, min = 1, max = 1 },
+        { item = "Base.Bag_ALICEpack_DesertCamo", chance = 0.25, min = 1, max = 1 },
+        { item = "Base.Bag_ALICE_BeltSus",    chance = 0.30, min = 1, max = 1 },
+        { item = "Base.Bag_Military",         chance = 0.25, min = 1, max = 1 },
+        { item = "Base.CanteenMilitary",      chance = 0.40, min = 1, max = 2 },
+        -- Взрывчатка
+        { item = "Base.Aerosolbomb",          chance = 0.15, min = 1, max = 1 },
+        { item = "Base.Molotov",              chance = 0.15, min = 1, max = 2 },
+        { item = "Base.FlameTrap",            chance = 0.10, min = 1, max = 1 },
+        { item = "Base.GunPowder",            chance = 0.20, min = 1, max = 2 },
+        { item = "Base.SmokeBomb",            chance = 0.20, min = 1, max = 2 },
+        { item = "Base.NoiseTrap",            chance = 0.20, min = 1, max = 2 },
+        -- Электроника
+        { item = "Base.WalkieTalkie4",        chance = 0.60, min = 1, max = 2 },
+        { item = "Base.Battery",              chance = 0.50, min = 1, max = 3 },
+        { item = "Base.ElectronicsScrap",     chance = 0.40, min = 1, max = 3 },
+        { item = "Base.Wire",                 chance = 0.30, min = 2, max = 4 },
+        { item = "Base.Lighter",              chance = 0.40, min = 1, max = 1 },
+        -- Редкие
+        { item = "Base.Katana",               chance = 0.03, min = 1, max = 1 },
+        { item = "Base.Sledgehammer",         chance = 0.05, min = 1, max = 1 },
+    },
+}

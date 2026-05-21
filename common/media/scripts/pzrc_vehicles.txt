@@ -1,0 +1,566 @@
+module PZRCVehicles {
+    imports {
+        Base
+    }
+
+    vehicle airdrop {
+        mechanicType = 1,
+        offRoadEfficiency = 0.8,
+        engineRepairLevel = 4,
+        playerDamageProtection = 0,
+
+        model
+        {
+            file = PZRCVehicles.airdrop,
+            scale = 1.8000,
+            offset = 0.0000 0.1500 -0.0111,
+        }
+
+        spawnOffsetY = 0.19392952,
+
+        skin
+        {
+            texture = Vehicles/Airdrop/airdrop_texture,
+        }
+
+        extents = 0.6444 0.6333 0.6444,
+        mass = 700,
+        physicsChassisShape = 0.6444 0.6333 0.6444,
+        centerOfMassOffset = 0.0000 0.3111 -0.0111,
+        shadowExtents = 0.8000 0.8000,
+        shadowOffset = 0.0000 -0.0117,
+        frontEndHealth = 150,
+        rearEndHealth = 150,
+
+        area TruckBed
+        {
+            xywh = 0.0000 0.0000 15.0000 15.0000,
+        }
+
+        template = Trunk/part/TruckBed,
+
+        part TruckBed
+        {
+            container
+            {
+                capacity = 300,
+            }
+        }
+
+        attachment trailer
+        {
+            offset = 0.5071 -0.3357 0.0000,
+            rotate = 0.0000 0.0000 0.0000,
+        }
+
+        attachment trailerfront
+        {
+            offset = -0.5071 -0.3643 0.0000,
+            rotate = 0.0000 0.0000 0.0000,
+        }
+    }
+
+    vehicle FEMASupplyDrop {
+        mechanicType = 1,
+        offRoadEfficiency = 0.8,
+        engineRepairLevel = 4,
+        playerDamageProtection = 0,
+
+        model
+        {
+            file = PZRCVehicles.Vehicle_FEMASupplyDrop,
+            scale = 1.4000,
+            offset = 0.0000 0.1143 -0.0143,
+        }
+
+        spawnOffsetY = 0.19392952,
+
+        skin
+        {
+            texture = Vehicles/EHE/Vehicle_FEMASupplyDrop,
+        }
+
+        textureMask = Vehicle_FEMASupplyDrop_mask,
+        extents = 1.0286 0.4571 1.1286,
+        mass = 550,
+        physicsChassisShape = 1.0000 0.4571 1.1000,
+        centerOfMassOffset = 0.0000 0.2286 -0.0143,
+        shadowExtents = 0.9927 1.0915,
+        shadowOffset = 0.0000 -0.0117,
+        frontEndHealth = 150,
+        rearEndHealth = 150,
+
+        area TruckBed
+        {
+            xywh = 0.0000 0.0000 2.4714 2.5429,
+        }
+
+        template = Trunk/part/TruckBed,
+
+        part TruckBed
+        {
+            container
+            {
+                capacity = 300,
+            }
+        }
+
+        attachment trailer
+        {
+            offset = 0.5071 -0.3357 0.0000,
+            rotate = 0.0000 0.0000 0.0000,
+        }
+
+        attachment trailerfront
+        {
+            offset = -0.5071 -0.3643 0.0000,
+            rotate = 0.0000 0.0000 0.0000,
+        }
+    }
+
+    vehicle SurvivorSupplyDrop {
+        mechanicType = 1,
+        offRoadEfficiency = 0.8,
+        engineRepairLevel = 4,
+        playerDamageProtection = 0,
+
+        model
+        {
+            file = PZRCVehicles.Vehicle_SurvivorSupplyDrop,
+            scale = 1.4000,
+            offset = 0.0000 0.1170 -0.0117,
+        }
+
+        spawnOffsetY = 0.19392952,
+
+        skin
+        {
+            texture = Vehicles/EHE/Vehicle_SurvivorSupplyDrop,
+        }
+
+        textureMask = Vehicle_SurvivorSupplyDrop_mask,
+        extents = 0.9864 0.4561 1.0942,
+        mass = 700,
+        physicsChassisShape = 0.9864 0.4561 1.0942,
+        centerOfMassOffset = 0.0000 0.2281 -0.0117,
+        shadowExtents = 0.9855 1.0987,
+        shadowOffset = 0.0000 -0.0117,
+        frontEndHealth = 150,
+        rearEndHealth = 150,
+
+        area TruckBed
+        {
+            xywh = 0.0000 0.0000 2.4678 2.5380,
+        }
+
+        template = Trunk/part/TruckBed,
+
+        part TruckBed
+        {
+            container
+            {
+                capacity = 300,
+            }
+        }
+
+        attachment trailer
+        {
+            offset = 0.5071 -0.3357 0.0000,
+            rotate = 0.0000 0.0000 0.0000,
+        }
+
+        attachment trailerfront
+        {
+            offset = -0.5071 -0.3643 0.0000,
+            rotate = 0.0000 0.0000 0.0000,
+        }
+    }
+
+    vehicle UH60GreenCrash {
+        mechanicType = 1,
+        offRoadEfficiency = 0.8,
+        engineRepairLevel = 4,
+        playerDamageProtection = 0,
+
+        model
+        {
+            file = PZRCVehicles.Vehicle_UH60Crash,
+            scale = 2.6900,
+            offset = 0.0000 -0.0223 0.7732,
+        }
+
+        spawnOffsetY = 0.19392952,
+
+        skin
+        {
+            texture = Vehicles/EHE/Vehicle_UH60Green_Crash,
+        }
+
+        textureMask = Vehicle_UH60_mask,
+        extents = 0.8401 1.1822 4.5353,
+        mass = 2000,
+        physicsChassisShape = 0.8253 1.1599 4.5428,
+        centerOfMassOffset = 0.0000 0.5799 0.1041,
+        shadowExtents = 0.0 0.0,
+        shadowOffset = 0.0 0.0,
+        frontEndHealth = 150,
+        rearEndHealth = 150,
+
+        area TruckBed
+        {
+            xywh = 0.0000 0.0000 3.0000 5.0000,
+        }
+
+        template = Trunk/part/TruckBed,
+
+        part TruckBed
+        {
+            container
+            {
+                capacity = 200,
+            }
+        }
+    }
+
+    vehicle UH60DesertCrash {
+        mechanicType = 1,
+        offRoadEfficiency = 0.8,
+        engineRepairLevel = 4,
+        playerDamageProtection = 0,
+
+        model
+        {
+            file = PZRCVehicles.Vehicle_UH60Crash,
+            scale = 2.6900,
+            offset = 0.0000 -0.0223 0.7732,
+        }
+
+        spawnOffsetY = 0.19392952,
+
+        skin
+        {
+            texture = Vehicles/EHE/Vehicle_UH60Desert_Crash,
+        }
+
+        textureMask = Vehicle_UH60_mask,
+        extents = 0.8401 1.1822 4.5353,
+        mass = 2000,
+        physicsChassisShape = 0.8253 1.1599 4.5428,
+        centerOfMassOffset = 0.0000 0.5799 0.1041,
+        shadowExtents = 0.0 0.0,
+        shadowOffset = 0.0 0.0,
+        frontEndHealth = 150,
+        rearEndHealth = 150,
+
+        area TruckBed
+        {
+            xywh = 0.0000 0.0000 3.0000 5.0000,
+        }
+
+        template = Trunk/part/TruckBed,
+
+        part TruckBed
+        {
+            container
+            {
+                capacity = 200,
+            }
+        }
+    }
+
+    vehicle UH60MedevacCrash {
+        mechanicType = 1,
+        offRoadEfficiency = 0.8,
+        engineRepairLevel = 4,
+        playerDamageProtection = 0,
+
+        model
+        {
+            file = PZRCVehicles.Vehicle_UH60Crash,
+            scale = 2.6900,
+            offset = 0.0000 -0.0223 0.7732,
+        }
+
+        spawnOffsetY = 0.19392952,
+
+        skin
+        {
+            texture = Vehicles/EHE/Vehicle_UH60Medevac_Crash,
+        }
+
+        textureMask = Vehicle_UH60_mask,
+        extents = 0.8401 1.1822 4.5353,
+        mass = 2000,
+        physicsChassisShape = 0.8253 1.1599 4.5428,
+        centerOfMassOffset = 0.0000 0.5799 0.1041,
+        shadowExtents = 0.0 0.0,
+        shadowOffset = 0.0 0.0,
+        frontEndHealth = 150,
+        rearEndHealth = 150,
+
+        area TruckBed
+        {
+            xywh = 0.0000 0.0000 3.0000 5.0000,
+        }
+
+        template = Trunk/part/TruckBed,
+
+        part TruckBed
+        {
+            container
+            {
+                capacity = 200,
+            }
+        }
+    }
+
+    vehicle Bell206PoliceCrash {
+        mechanicType = 1,
+        offRoadEfficiency = 0.8,
+        engineRepairLevel = 4,
+        playerDamageProtection = 0,
+
+        model
+        {
+            file = PZRCVehicles.Vehicle_Bell206Fuselage,
+            scale = 3.1100,
+            offset = 0.0000 0.0064 1.0193,
+        }
+
+        spawnOffsetY = 0.19392952,
+
+        skin
+        {
+            texture = Vehicles/EHE/Vehicle_Bell206PoliceDamaged,
+        }
+
+        textureMask = Vehicle_Bell206_mask,
+        extents = 0.7524 0.9582 3.4534,
+        mass = 1500,
+        physicsChassisShape = 0.7524 0.9646 3.4469,
+        centerOfMassOffset = 0.0000 0.5016 0.0032,
+        shadowExtents = 0.0 0.0,
+        shadowOffset = 0.0 0.0,
+        frontEndHealth = 150,
+        rearEndHealth = 150,
+
+        area TruckBed
+        {
+            xywh = 0.0000 0.0000 2.0000 4.0000,
+        }
+
+        template = Trunk/part/TruckBed,
+
+        part TruckBed
+        {
+            container
+            {
+                capacity = 150,
+            }
+        }
+    }
+
+    vehicle Bell206SurvivalistCrash {
+        mechanicType = 1,
+        offRoadEfficiency = 0.8,
+        engineRepairLevel = 4,
+        playerDamageProtection = 0,
+
+        model
+        {
+            file = PZRCVehicles.Vehicle_Bell206Fuselage,
+            scale = 3.1100,
+            offset = 0.0000 0.0064 1.0193,
+        }
+
+        spawnOffsetY = 0.19392952,
+
+        skin
+        {
+            texture = Vehicles/EHE/Vehicle_Bell206SurvivalistDamaged,
+        }
+
+        textureMask = Vehicle_Bell206_mask,
+        extents = 0.7524 0.9582 3.4534,
+        mass = 1500,
+        physicsChassisShape = 0.7524 0.9646 3.4469,
+        centerOfMassOffset = 0.0000 0.5016 0.0032,
+        shadowExtents = 0.0 0.0,
+        shadowOffset = 0.0 0.0,
+        frontEndHealth = 150,
+        rearEndHealth = 150,
+
+        area TruckBed
+        {
+            xywh = 0.0000 0.0000 2.0000 4.0000,
+        }
+
+        template = Trunk/part/TruckBed,
+
+        part TruckBed
+        {
+            container
+            {
+                capacity = 150,
+            }
+        }
+    }
+
+    vehicle UH60GreenTail {
+        mechanicType = 1,
+        offRoadEfficiency = 0.8,
+        engineRepairLevel = 4,
+        playerDamageProtection = 0,
+
+        model
+        {
+            file = PZRCVehicles.Vehicle_UH60Tail,
+            scale = 3.6900,
+            offset = 0.0407 0.1068 0.0591,
+        }
+
+        spawnOffsetY = 0.19392952,
+
+        skin
+        {
+            texture = Vehicles/EHE/Vehicle_UH60Green_Crash,
+        }
+
+        textureMask = Vehicle_UH60_mask,
+        textureShadow = highlights/tailshadow,
+        extents = 0.7524 0.3560 0.5957,
+        mass = 200,
+        physicsChassisShape = 0.7524 0.3338 0.6082,
+        centerOfMassOffset = 0.0000 0.1719 0.0032,
+        shadowExtents = 0.0 0.0,
+        shadowOffset = 0.0 0.0,
+        frontEndHealth = 150,
+        rearEndHealth = 150,
+    }
+
+    vehicle UH60DesertTail {
+        mechanicType = 1,
+        offRoadEfficiency = 0.8,
+        engineRepairLevel = 4,
+        playerDamageProtection = 0,
+
+        model
+        {
+            file = PZRCVehicles.Vehicle_UH60Tail,
+            scale = 3.6900,
+            offset = 0.0407 0.1068 0.0591,
+        }
+
+        spawnOffsetY = 0.19392952,
+
+        skin
+        {
+            texture = Vehicles/EHE/Vehicle_UH60Desert_Crash,
+        }
+
+        textureMask = Vehicle_UH60_mask,
+        textureShadow = highlights/tailshadow,
+        extents = 0.7524 0.3560 0.5957,
+        mass = 200,
+        physicsChassisShape = 0.7524 0.3338 0.6082,
+        centerOfMassOffset = 0.0000 0.1719 0.0032,
+        shadowExtents = 0.0 0.0,
+        shadowOffset = 0.0 0.0,
+        frontEndHealth = 150,
+        rearEndHealth = 150,
+    }
+
+    vehicle UH60MedevacTail {
+        mechanicType = 1,
+        offRoadEfficiency = 0.8,
+        engineRepairLevel = 4,
+        playerDamageProtection = 0,
+
+        model
+        {
+            file = PZRCVehicles.Vehicle_UH60Tail,
+            scale = 3.6900,
+            offset = 0.0407 0.1068 0.0591,
+        }
+
+        spawnOffsetY = 0.19392952,
+
+        skin
+        {
+            texture = Vehicles/EHE/Vehicle_UH60Medevac_Crash,
+        }
+
+        textureMask = Vehicle_UH60_mask,
+        textureShadow = highlights/tailshadow,
+        extents = 0.7524 0.3560 0.5957,
+        mass = 200,
+        physicsChassisShape = 0.7524 0.3338 0.6082,
+        centerOfMassOffset = 0.0000 0.1719 0.0032,
+        shadowExtents = 0.0 0.0,
+        shadowOffset = 0.0 0.0,
+        frontEndHealth = 150,
+        rearEndHealth = 150,
+    }
+
+    vehicle Bell206PoliceTail {
+        mechanicType = 1,
+        offRoadEfficiency = 0.8,
+        engineRepairLevel = 4,
+        playerDamageProtection = 0,
+
+        model
+        {
+            file = PZRCVehicles.Vehicle_Bell206Tail,
+            scale = 3.1100,
+            offset = 0.0000 -0.0129 0.0675,
+        }
+
+        spawnOffsetY = 0.19392952,
+
+        skin
+        {
+            texture = Vehicles/EHE/Vehicle_Bell206PoliceDamaged,
+        }
+
+        textureMask = Vehicle_Bell206_mask,
+        extents = 0.3923 0.4630 1.2090,
+        mass = 300,
+        physicsChassisShape = 0.3859 0.4630 1.2283,
+        centerOfMassOffset = 0.0000 0.2219 -0.0032,
+        shadowExtents = 0.0 0.0,
+        shadowOffset = 0.0 0.0,
+        frontEndHealth = 150,
+        rearEndHealth = 150,
+    }
+
+    vehicle Bell206SurvivalistTail {
+        mechanicType = 1,
+        offRoadEfficiency = 0.8,
+        engineRepairLevel = 4,
+        playerDamageProtection = 0,
+
+        model
+        {
+            file = PZRCVehicles.Vehicle_Bell206Tail,
+            scale = 3.1100,
+            offset = 0.0000 -0.0129 0.0675,
+        }
+
+        spawnOffsetY = 0.19392952,
+
+        skin
+        {
+            texture = Vehicles/EHE/Vehicle_Bell206SurvivalistDamaged,
+        }
+
+        textureMask = Vehicle_Bell206_mask,
+        extents = 0.3923 0.4630 1.2090,
+        mass = 300,
+        physicsChassisShape = 0.3859 0.4630 1.2283,
+        centerOfMassOffset = 0.0000 0.2219 -0.0032,
+        shadowExtents = 0.0 0.0,
+        shadowOffset = 0.0 0.0,
+        frontEndHealth = 150,
+        rearEndHealth = 150,
+    }
+}

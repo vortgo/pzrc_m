@@ -1,0 +1,26 @@
+"workshopitem"
+{
+    "appid"            "108600"
+
+    // Workshop ID is filled in by Steam after the FIRST publish.
+    // Leave 0 to create a new entry; set the assigned ID for updates.
+    "publishedfileid"  "0"
+
+    "contentfolder"    "/home/vortgo/projects/pzrc_m"
+    "previewfile"      "/home/vortgo/projects/pzrc_m/preview.png"
+    "visibility"       "0"
+
+    "title"            "PZRC Mod"
+    "description"      "Standalone server-side toolkit for PZ B42 Multiplayer: starter kit crate, ration fridge, dynamic radio events, library, infinite generator, fuel pump refill, and a welcome note. All logic ships inside the mod — no manual file drops to ~/Zomboid/Lua/ required."
+
+    "changenote"       "Initial release (v0.1.0)"
+
+    "tags"
+    {
+        "tag"  "Build 42"
+        "tag"  "Multiplayer"
+        "tag"  "Server"
+        "tag"  "Loot"
+        "tag"  "Items"
+    }
+}

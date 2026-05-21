@@ -1,0 +1,35 @@
+{
+    "IGUI_PZRC_Menu": "PZRC M",
+    "IGUI_PZRC_Section_StarterKit": "Стартовый набор",
+    "IGUI_PZRC_Section_Fridge": "Холодильник",
+    "IGUI_PZRC_Section_InfGen": "Бесконечный генератор",
+    "IGUI_PZRC_Section_Library": "Библиотека",
+
+    "IGUI_PZRC_NoteName": "Помятая записка",
+    "IGUI_PZRC_NoteText": "Если читаешь это -- значит, ты ещё жив. Это уже хороший знак. Среди руин нашлась горстка упрямых, кто всё ещё держится. Не рай, но место, где можно перевести дух и встретить таких же живых. Координаты: %1, %2. Найди рацию -- можно собрать из подручного -- и настрой её на %3 МГц. Там идёт наш канал. Услышишь, что творится за стенами, и куда стоит сходить, пока другие не успели. Двигайся осторожно. Эти улицы давно не для людей.",
+
+    "IGUI_PZRC_StarterKit_Claim": "Получить стартовый набор",
+    "IGUI_PZRC_StarterKit_Place": "Установить ящик снабжения",
+    "IGUI_PZRC_StarterKit_Remove": "Убрать ящик снабжения",
+    "IGUI_PZRC_StarterKit_Received": "Стартовый набор получен!",
+    "IGUI_PZRC_StarterKit_AlreadyReceived": "Вы уже получили стартовый набор",
+    "IGUI_PZRC_StarterKit_Cooldown": "Следующий набор доступен через %1 ч.",
+    "IGUI_PZRC_StarterKit_Rotate": "Повернуть ящик снабжения",
+    "IGUI_PZRC_StarterKit_Rotated": "Ящик повёрнут",
+
+    "IGUI_PZRC_Fridge_Claim": "Взять дневной паёк",
+    "IGUI_PZRC_Fridge_Place": "Установить холодильник",
+    "IGUI_PZRC_Fridge_Remove": "Убрать холодильник",
+    "IGUI_PZRC_Fridge_Rotate": "Повернуть холодильник",
+    "IGUI_PZRC_Fridge_Rotated": "Холодильник повёрнут",
+    "IGUI_PZRC_Fridge_Received": "Дневной паёк получен!",
+    "IGUI_PZRC_Fridge_Cooldown": "Паёк уже взят сегодня. Возвращайся завтра.",
+    "IGUI_PZRC_Fridge_CooldownDays": "Следующий паёк через %1 игр. сут.",
+    "IGUI_PZRC_Fridge_Error": "Холодильник пуст",
+
+    "IGUI_PZRC_InfGen_AdminOnly": "Только админы могут забирать бесконечные генераторы.",
+    "IGUI_PZRC_InfGen_SetInfinite": "Генератор переведён в режим БЕСКОНЕЧНОГО топлива.",
+    "IGUI_PZRC_InfGen_SetNormal": "Генератор переведён в обычный режим.",
+    "IGUI_PZRC_InfGen_MakeInfinite": "Сделать бесконечным",
+    "IGUI_PZRC_InfGen_MakeNormal": "Сделать обычным"
+}

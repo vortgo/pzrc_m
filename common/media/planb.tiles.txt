@@ -1,0 +1,151 @@
+version = 1
+tileset
+{
+    file = planb_01
+    size = 8,9
+    id = 1
+    // planb_01_0
+    tile
+    {
+        xy = 0,0
+        solid = 
+    }
+    // planb_01_1
+    tile
+    {
+        xy = 1,0
+        solid = 
+    }
+    // planb_01_8
+    tile
+    {
+        xy = 0,1
+        solid = 
+    }
+    // planb_01_9
+    tile
+    {
+        xy = 1,1
+        solid = 
+    }
+    // planb_01_10
+    tile
+    {
+        xy = 2,1
+        solid = 
+    }
+    // planb_01_11
+    tile
+    {
+        xy = 3,1
+        solid = 
+    }
+}
+tileset
+{
+    file = planb_02
+    size = 8,8
+    id = 2
+    // planb_02_16
+    tile
+    {
+        xy = 0,2
+        solid = 
+    }
+    // planb_02_17
+    tile
+    {
+        xy = 1,2
+        solid = 
+    }
+    // planb_02_18
+    tile
+    {
+        xy = 2,2
+        solid = 
+    }
+    // planb_02_20
+    tile
+    {
+        xy = 4,2
+        solid = 
+    }
+    // planb_02_21
+    tile
+    {
+        xy = 5,2
+        solid = 
+    }
+    // planb_02_22
+    tile
+    {
+        xy = 6,2
+        solid = 
+    }
+}
+tileset
+{
+    file = planb_03
+    size = 8,8
+    id = 3
+    // planb_03_16
+    tile
+    {
+        xy = 0,2
+        LightRadius = 7
+        lightR = 3
+        lightswitch = 
+        solid = 
+        streetlight = 
+    }
+    // planb_03_17
+    tile
+    {
+        xy = 1,2
+        LightRadius = 7
+        lightR = 3
+        lightswitch = 
+        solid = 
+        streetlight = 
+    }
+    // planb_03_18
+    tile
+    {
+        xy = 2,2
+        LightRadius = 7
+        lightR = 3
+        lightswitch = 
+        solid = 
+        streetlight = 
+    }
+    // planb_03_19
+    tile
+    {
+        xy = 3,2
+        LightRadius = 7
+        lightR = 3
+        lightswitch = 
+        solid = 
+        streetlight = 
+    }
+    // planb_03_20
+    tile
+    {
+        xy = 4,2
+        LightRadius = 7
+        lightR = 3
+        lightswitch = 
+        solid = 
+        streetlight = 
+    }
+    // planb_03_21
+    tile
+    {
+        xy = 5,2
+        LightRadius = 7
+        lightR = 3
+        lightswitch = 
+        solid = 
+        streetlight = 
+    }
+}

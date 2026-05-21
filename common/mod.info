@@ -1,0 +1,10 @@
+name=PZRC Mod
+id=pzrc_m
+description=Standalone server-side mod: welcome note + radio, dynamic events, library, infinite generator, fuel pump refill, starter kit crate and ration fridge. All logic ships inside the mod — no manual file deployment to ~/Zomboid/Lua/ required.
+poster=poster.png
+pack=szcrate
+pack=planb
+tiledef=tiledefinitions 200
+tiledef=planb 5641
+modversion=0.2.0
+versionMin=42.14

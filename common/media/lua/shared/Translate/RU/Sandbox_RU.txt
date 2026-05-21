@@ -1,0 +1,53 @@
+Sandbox_RU = {
+
+Sandbox_PZRC = "PZRC Mod",
+
+Sandbox_pzrc_m_BaseX = "Координата X базы",
+Sandbox_pzrc_m_BaseX_tooltip = "Координата X safe zone в мире. Подставляется в записку и радиосообщения. По умолчанию: 9492.",
+
+Sandbox_pzrc_m_BaseY = "Координата Y базы",
+Sandbox_pzrc_m_BaseY_tooltip = "Координата Y safe zone в мире. По умолчанию: 11190.",
+
+Sandbox_pzrc_m_VehicleClaimRadius = "Радиус защиты машин (тайлы)",
+Sandbox_pzrc_m_VehicleClaimRadius_tooltip = "Радиус в тайлах вокруг BaseX/BaseY, где машины автоматически закрепляются за водителем/пассажирами и защищены от других игроков. Не связан с визуальным маркером на карте. По умолчанию: 90.",
+
+Sandbox_pzrc_m_RadioFrequencyKHz = "Частота радио (кГц)",
+Sandbox_pzrc_m_RadioFrequencyKHz_tooltip = "Частота вещания в кГц (95200 = 95.2 МГц). По умолчанию: 95200.",
+
+Sandbox_pzrc_m_StarterKitCooldownHours = "Кулдаун стартового набора (ч)",
+Sandbox_pzrc_m_StarterKitCooldownHours_tooltip = "Реальные часы между получениями стартового набора (по SteamID). По умолчанию: 24.",
+
+Sandbox_pzrc_m_FridgeRespawnIntervalGameDays = "Интервал пайка холодильника (игровых дней)",
+Sandbox_pzrc_m_FridgeRespawnIntervalGameDays_tooltip = "Игровые дни между получениями пайка (на персонажа). По умолчанию: 1.",
+
+Sandbox_pzrc_m_EventAutoSpawnIntervalMinutes = "Интервал автоспавна событий (мин)",
+Sandbox_pzrc_m_EventAutoSpawnIntervalMinutes_tooltip = "Реальные минуты между автоспавнами событий. По умолчанию: 5.",
+
+Sandbox_pzrc_m_EventTTLHours = "TTL события (реальных часов)",
+Sandbox_pzrc_m_EventTTLHours_tooltip = "Реальные часы до очистки непосещённого события. По умолчанию: 0.05 (~3 мин).",
+
+Sandbox_pzrc_m_EventVisitRadiusCells = "Радиус посещения события (клеток)",
+Sandbox_pzrc_m_EventVisitRadiusCells_tooltip = "Дистанция, с которой игрок считается посетившим событие. По умолчанию: 30.",
+
+Sandbox_pzrc_m_EventBuildingSearchRadius = "Радиус поиска здания для события",
+Sandbox_pzrc_m_EventBuildingSearchRadius_tooltip = "Радиус поиска здания для BuildingStash. По умолчанию: 7.",
+
+Sandbox_pzrc_m_EventSafeSquareRadius = "Радиус поиска свободной клетки",
+Sandbox_pzrc_m_EventSafeSquareRadius_tooltip = "Радиус поиска безопасной клетки для спавна. По умолчанию: 20.",
+
+Sandbox_pzrc_m_EventOverlapRadiusCells = "Мин. дистанция между событиями (клеток)",
+Sandbox_pzrc_m_EventOverlapRadiusCells_tooltip = "Минимальное расстояние между активными событиями. По умолчанию: 30.",
+
+Sandbox_pzrc_m_EventCleanupRadiusCells = "Радиус защиты от очистки (клеток)",
+Sandbox_pzrc_m_EventCleanupRadiusCells_tooltip = "Если игрок ближе — событие не чистится, чтобы не исчезло на глазах. По умолчанию: 20.",
+
+Sandbox_pzrc_m_LibraryRestockIntervalMinutes = "Интервал пополнения библиотеки (мин)",
+Sandbox_pzrc_m_LibraryRestockIntervalMinutes_tooltip = "Реальные минуты между тиками пополнения полок. По умолчанию: 5.",
+
+Sandbox_pzrc_m_InfiniteGenValidateIntervalSeconds = "Интервал валидации генераторов (сек)",
+Sandbox_pzrc_m_InfiniteGenValidateIntervalSeconds_tooltip = "Реальные секунды между проверками бесконечных генераторов. По умолчанию: 60.",
+
+Sandbox_pzrc_m_FuelPumpMaxCapacity = "Максимальная ёмкость заправки",
+Sandbox_pzrc_m_FuelPumpMaxCapacity_tooltip = "Максимальное количество топлива при заправке насоса. По умолчанию: 14000.",
+
+}

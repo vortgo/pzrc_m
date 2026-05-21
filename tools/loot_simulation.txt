@@ -1,0 +1,308 @@
+
+========================================
+  EVENT: abandonedvehicle  (32 entries)
+========================================
+
+  Roll #1 — 10 items total
+  [еда/готовка] CannedEggplant×1
+  [запчасти] EngineParts×2
+  [инструмент] Lighter×1, Wrench×1
+  [книги/мануалы] MechanicMag3×1
+  [питьё] BeerBottle×2, WaterPurificationTablets×1
+  [электроника] WalkieTalkie4×1
+
+  Roll #2 — 12 items total
+  [еда/готовка] TinnedBeans×2, TinnedSoup×2, CannedBroccoli×1
+  [запчасти] PetrolCan×1
+  [инструмент] Lighter×1
+  [книги/мануалы] BookMechanic1×1, MechanicMag2×1
+  [питьё] WaterBottlePetrol×2
+  [электроника] WalkieTalkie4×1
+
+  Roll #3 — 4 items total
+  [еда/готовка] CannedRoe×1
+  [инструмент] Screwdriver×1, Wrench×1
+  [питьё] BeerBottle×1
+
+  Roll #4 — 12 items total
+  [еда/готовка] CannedChili×1, CannedPotato2×1, SugarBrown×1
+  [инструмент] Screwdriver×1, Wrench×1
+  [книги/мануалы] BookMechanic1×1, MechanicMag1×1
+  [питьё] BeerBottle×2, WaterBottlePetrol×2
+  [электроника] WalkieTalkie4×1
+
+  Roll #5 — 16 items total
+  [еда/готовка] SugarBrown×2, CannedPotato2×1
+  [запчасти] EngineParts×4
+  [инструмент] Lighter×1, Screwdriver×1
+  [питьё] BeerBottle×2, WaterBottlePetrol×2
+  [сумки] Bag_FannyPackFront×1
+  [электроника] CarBattery2×1, WalkieTalkie4×1
+
+========================================
+  EVENT: airdrop  (45 entries)
+========================================
+
+  Roll #1 — 10 items total
+  [обвес] GunLight×1, x4Scope×1
+  [оружие] DoubleBarrelShotgun×1, Pistol2×1, Rifle_CapGun×1
+  [патроны] 556Box×1, 9mmClip×1, Bullets357Box×1
+  [сумки] Bag_ALICE_BeltSus_Camo×1, Bag_SurvivorBag×1
+
+  Roll #2 — 4 items total
+  [оружие] L92_Carbine×1, Revolver_CapGun×1
+  [патроны] 556Clip×1
+  [сумки] Bag_ALICE_BeltSus_Camo×1
+
+  Roll #3 — 5 items total
+  [обвес] GunLight×1, RecoilPad×1, RedDot×1
+  [оружие] AssaultRifle×1, JS3T_Shotgun×1
+
+  Roll #4 — 10 items total
+  [обвес] AmmoStraps×1, ChokeTubeFull×1, RedDot×1, TritiumSights×1, x2Scope×1
+  [оружие] Revolver_CapGun×1, Shotgun×1, ShotgunSawnoff×1
+  [патроны] 308Box×1
+  [сумки] Bag_ALICEpack×1
+
+  Roll #5 — 5 items total
+  [обвес] AmmoStraps×1
+  [патроны] Bullets45Box×2, 556Box×1
+  [сумки] Bag_ALICEpack_DesertCamo×1
+
+========================================
+  EVENT: buildingstash  (73 entries)
+========================================
+
+  Roll #1 — 18 items total
+  [еда/готовка] TunaTin×2, CannedPotato2×1, Crisps×1
+  [инструмент] Saw×1
+  [книги/мануалы] BookFarming1×1, BookMaintenance1×1
+  [медицина] SutureNeedle×3, Disinfectant×1
+  [оружие] Bag_ShotgunDblBag×1
+  [патроны] Bullets38Box×1
+  [прочее] Glue×3, Thread×2
+
+  Roll #2 — 9 items total
+  [еда/готовка] CannedPotato2×2, SugarBrown×1
+  [книги/мануалы] BookHusbandry1×1, MechanicMag3×1
+  [медицина] Pills×2
+  [патроны] Bullets9mmBox×1
+  [прочее] Glue×1
+
+  Roll #3 — 14 items total
+  [взрывчатка] GunPowder×1
+  [еда/готовка] TunaTin×2, TinnedSoup×1
+  [книги/мануалы] BookCarpentry1×1, MechanicMag3×1, TailoringMag1×1
+  [медицина] Disinfectant×2
+  [оружие] Bag_ShotgunDblBag×1
+  [прочее] Thread×2
+  [электроника] Wire×2
+
+  Roll #4 — 9 items total
+  [еда/готовка] CannedRoe×1, TinnedSoup×1
+  [инструмент] BlowTorch×1, Lighter×1
+  [книги/мануалы] BookMetalWelding1×1
+  [медицина] SutureNeedle×2
+  [одежда] Tshirt_HuntingCamo×1
+  [патроны] Bullets357Box×1
+
+  Roll #5 — 13 items total
+  [еда/готовка] CannedCornedBeef×3, TinnedSoup×2
+  [инструмент] Lighter×1
+  [книги/мануалы] BookElectrician1×1, BookFarming2×1, BookHusbandry1×1, FarmingMag7×1
+  [патроны] Bullets38Box×1, Bullets9mmBox×1
+  [прочее] Woodglue×1
+
+========================================
+  EVENT: camp  (40 entries)
+========================================
+
+  Roll #1 — 10 items total
+  [еда/готовка] TinnedBeans×1
+  [инструмент] FishingRod×1, Twine×1
+  [медицина] Bandage×1
+  [одежда] Hat_BeanieWinter×1
+  [питьё] WhiskeyFull×1
+  [сумки] Bag_DuffelBag×1
+  [электроника] Battery×2, WalkieTalkie4×1
+
+  Roll #2 — 12 items total
+  [еда/готовка] CanOpener×1, Crisps×1, TinnedBeans×1, TunaTin×1
+  [инструмент] HuntingKnife×1, Lighter×1, Matches×1, Tarp×1
+  [медицина] Bandage×2
+  [сумки] Bag_BigHikingBag×1, Bag_DuffelBag×1
+
+  Roll #3 — 12 items total
+  [еда/готовка] CanOpener×1, CannedCornedBeef×1, Cereal×1, CookingPot×1, TinnedSoup×1
+  [инструмент] HuntingKnife×1, Lighter×1, Matches×1, TrapStick×1
+  [одежда] Gloves_LeatherGloves×1
+  [питьё] BeerBottle×1, WaterBottle×1
+
+  Roll #4 — 8 items total
+  [еда/готовка] Crisps×1, TinnedBeans×1
+  [инструмент] Twine×2, HuntingKnife×1, Rope×1
+  [питьё] BeerBottle×1
+  [сумки] Bag_BigHikingBag×1
+
+  Roll #5 — 18 items total
+  [еда/готовка] CanOpener×1, CannedChili×1, CannedCornedBeef×1, TinnedBeans×1, TinnedSoup×1
+  [инструмент] Twine×2, FishingRod×1, HuntingKnife×1, Matches×1, Torch×1
+  [медицина] Bandage×2, Disinfectant×1
+  [одежда] Hat_BeanieWinter×1, Poncho_Yellow×1
+  [питьё] BeerBottle×1
+  [электроника] WalkieTalkie4×1
+
+========================================
+  EVENT: foreststash  (49 entries)
+========================================
+
+  Roll #1 — 7 items total
+  [еда/готовка] CannedBroccoli×2
+  [инструмент] PickAxe×1
+  [книги/мануалы] ElectronicsMag4×1, HuntingMag2×1
+  [оружие] Pistol×1
+  [патроны] Bullets38Box×1
+
+  Roll #2 — 9 items total
+  [инструмент] HandAxe_Old×1, Machete×1, Screwdriver×1, SpearScrapKnife×1, TrapStick×1
+  [книги/мануалы] BookAiming2×1, TailoringMag2×1
+  [одежда] Hat_HockeyMask_Silver×1
+  [патроны] Bullets357Box×1
+
+  Roll #3 — 6 items total
+  [еда/готовка] TinnedSoup×2
+  [книги/мануалы] BookReloading1×1
+  [оружие] Pistol×1
+  [патроны] Bullets44Box×1
+  [сумки] Bag_ALICE_BeltSus×1
+
+  Roll #4 — 5 items total
+  [еда/готовка] CannedRoe×1
+  [инструмент] Shovel2×1
+  [книги/мануалы] BookAiming2×1
+  [сумки] Bag_ALICE_BeltSus×1, Bag_MedicalBag×1
+
+  Roll #5 — 10 items total
+  [еда/готовка] CannedBroccoli×2, CannedEggplant×2, CannedRoe×2
+  [инструмент] WoodAxe×1
+  [одежда] Hat_HockeyMask_Silver×1
+  [патроны] NailsBox×1
+  [прочее] Thread×1
+
+========================================
+  EVENT: helicoptercrash  (61 entries)
+========================================
+
+  Roll #1 — 22 items total
+  [еда/готовка] TinnedBeans×2
+  [медицина] Tweezers×1
+  [обвес] GunLight×1, RecoilPad×1, RedDot×1
+  [оружие] Pistol2×2, JS3T_Shotgun×1, Pistol×1
+  [патроны] Bullets9mmBox×2, 556Box×1, 556Clip×1, 9mmClip×1
+  [питьё] WaterPurificationTablets×1
+  [электроника] ElectronicsScrap×2, WalkieTalkie4×2, Wire×2
+
+  Roll #2 — 15 items total
+  [медицина] Antibiotics×2, Disinfectant×1, SutureNeedleHolder×1
+  [обвес] x4Scope×1
+  [одежда] Vest_BulletArmy×1
+  [патроны] 9mmClip×2, 556Clip×1, M14Clip×1, ShotgunShellsBox×1
+  [питьё] WaterRationCan×2
+  [сумки] Bag_ALICEpack_DesertCamo×1
+  [электроника] CarBatteryCharger×1
+
+  Roll #3 — 22 items total
+  [еда/готовка] TinnedBeans×2
+  [инструмент] FlameTrap×1, Lighter×1
+  [медицина] Disinfectant×1, Scalpel×1, SutureNeedle×1, Tweezers×1
+  [обвес] x8Scope×1
+  [одежда] Hat_RiotHelmet×1
+  [оружие] Pistol3×2
+  [патроны] 556Box×1, 9mmClip×1, JS14_Clip×1, M14Clip×1
+  [питьё] WaterBottle×2, CanteenMilitary×1
+  [сумки] Bag_ALICEpack_DesertCamo×1
+  [электроника] CarBatteryCharger×1, WalkieTalkie4×1
+
+  Roll #4 — 24 items total
+  [взрывчатка] SmokeBomb×1
+  [инструмент] FlameTrap×1
+  [медицина] Scalpel×1, Splint×1
+  [оружие] Pistol3×2, AssaultRifle2×1, MSR7T_Rifle×1
+  [патроны] 9mmClip×2, JS14_Clip×2, M14Clip×2
+  [питьё] WaterBottle×2, WaterRationCan×2, WaterPurificationTablets×1
+  [сумки] Bag_ALICEpack_Army×1
+  [электроника] ElectronicsScrap×2, WalkieTalkie4×2
+
+  Roll #5 — 12 items total
+  [еда/готовка] CannedCornedBeef×2
+  [инструмент] NoiseTrap×1
+  [медицина] Scalpel×1, SutureNeedleHolder×1
+  [обвес] RecoilPad×1, RedDot×1
+  [одежда] Vest_BulletArmy×1
+  [оружие] AssaultRifle×1
+  [питьё] CanteenMilitary×1
+  [сумки] Bag_ALICEpack_Army×1
+  [электроника] Battery×1
+
+========================================
+  AGGREGATE over 5 rolls per event
+========================================
+
+  abandonedvehicle: 54 items across 5 rolls (avg 10.8 per drop)
+    питьё           14 total  (2.8 avg)
+    еда/готовка     13 total  (2.6 avg)
+    инструмент       9 total  (1.8 avg)
+    запчасти         7 total  (1.4 avg)
+    книги/мануалы    5 total  (1.0 avg)
+    электроника      5 total  (1.0 avg)
+    сумки            1 total  (0.2 avg)
+
+  airdrop: 34 items across 5 rolls (avg 6.8 per drop)
+    обвес           11 total  (2.2 avg)
+    оружие          10 total  (2.0 avg)
+    патроны          8 total  (1.6 avg)
+    сумки            5 total  (1.0 avg)
+
+  buildingstash: 63 items across 5 rolls (avg 12.6 per drop)
+    еда/готовка     17 total  (3.4 avg)
+    книги/мануалы   12 total  (2.4 avg)
+    медицина        10 total  (2.0 avg)
+    прочее           9 total  (1.8 avg)
+    патроны          5 total  (1.0 avg)
+    инструмент       4 total  (0.8 avg)
+    оружие           2 total  (0.4 avg)
+    электроника      2 total  (0.4 avg)
+    взрывчатка       1 total  (0.2 avg)
+    одежда           1 total  (0.2 avg)
+
+  camp: 60 items across 5 rolls (avg 12.0 per drop)
+    инструмент      20 total  (4.0 avg)
+    еда/готовка     17 total  (3.4 avg)
+    медицина         6 total  (1.2 avg)
+    питьё            5 total  (1.0 avg)
+    одежда           4 total  (0.8 avg)
+    сумки            4 total  (0.8 avg)
+    электроника      4 total  (0.8 avg)
+
+  foreststash: 37 items across 5 rolls (avg 7.4 per drop)
+    еда/готовка     11 total  (2.2 avg)
+    инструмент       8 total  (1.6 avg)
+    книги/мануалы    6 total  (1.2 avg)
+    патроны          4 total  (0.8 avg)
+    сумки            3 total  (0.6 avg)
+    оружие           2 total  (0.4 avg)
+    одежда           2 total  (0.4 avg)
+    прочее           1 total  (0.2 avg)
+
+  helicoptercrash: 95 items across 5 rolls (avg 19.0 per drop)
+    патроны         20 total  (4.0 avg)
+    электроника     14 total  (2.8 avg)
+    медицина        13 total  (2.6 avg)
+    питьё           12 total  (2.4 avg)
+    оружие          11 total  (2.2 avg)
+    обвес            7 total  (1.4 avg)
+    еда/готовка      6 total  (1.2 avg)
+    сумки            4 total  (0.8 avg)
+    инструмент       4 total  (0.8 avg)
+    одежда           3 total  (0.6 avg)
+    взрывчатка       1 total  (0.2 avg)

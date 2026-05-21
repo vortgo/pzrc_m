@@ -1,0 +1,53 @@
+Sandbox_EN = {
+
+Sandbox_PZRC = "PZRC Mod",
+
+Sandbox_pzrc_m_BaseX = "Safe Zone Base X",
+Sandbox_pzrc_m_BaseX_tooltip = "World X coordinate of the safe zone base. Substituted into the player note and radio messages. Default: 9492.",
+
+Sandbox_pzrc_m_BaseY = "Safe Zone Base Y",
+Sandbox_pzrc_m_BaseY_tooltip = "World Y coordinate of the safe zone base. Default: 11190.",
+
+Sandbox_pzrc_m_VehicleClaimRadius = "Vehicle Protection Radius (tiles)",
+Sandbox_pzrc_m_VehicleClaimRadius_tooltip = "Radius (in tiles) around BaseX/BaseY where vehicles get auto-claimed for their drivers/passengers and are protected from other players. Independent from the visual map marker. Default: 90.",
+
+Sandbox_pzrc_m_RadioFrequencyKHz = "Radio Frequency (kHz)",
+Sandbox_pzrc_m_RadioFrequencyKHz_tooltip = "Broadcast frequency in kHz (95200 = 95.2 MHz). Default: 95200.",
+
+Sandbox_pzrc_m_StarterKitCooldownHours = "Starter Kit Cooldown (hours)",
+Sandbox_pzrc_m_StarterKitCooldownHours_tooltip = "Real-time hours between consecutive starter kit claims per SteamID. Default: 24.",
+
+Sandbox_pzrc_m_FridgeRespawnIntervalGameDays = "Fridge Ration Interval (game days)",
+Sandbox_pzrc_m_FridgeRespawnIntervalGameDays_tooltip = "In-game days between ration pickups per character. Default: 1.",
+
+Sandbox_pzrc_m_EventAutoSpawnIntervalMinutes = "Event Auto-Spawn Interval (minutes)",
+Sandbox_pzrc_m_EventAutoSpawnIntervalMinutes_tooltip = "Real-time minutes between automatic event spawns. Default: 5.",
+
+Sandbox_pzrc_m_EventTTLHours = "Event TTL (real hours)",
+Sandbox_pzrc_m_EventTTLHours_tooltip = "Real-time hours before an unvisited event is cleaned up. Default: 0.05 (~3 min).",
+
+Sandbox_pzrc_m_EventVisitRadiusCells = "Event Visit Radius (cells)",
+Sandbox_pzrc_m_EventVisitRadiusCells_tooltip = "Distance at which a player is considered to have visited an event. Default: 30.",
+
+Sandbox_pzrc_m_EventBuildingSearchRadius = "Event Building Search Radius",
+Sandbox_pzrc_m_EventBuildingSearchRadius_tooltip = "Search radius for a building when placing a BuildingStash event. Default: 7.",
+
+Sandbox_pzrc_m_EventSafeSquareRadius = "Event Safe Square Radius",
+Sandbox_pzrc_m_EventSafeSquareRadius_tooltip = "Search radius for a free tile when placing event objects. Default: 20.",
+
+Sandbox_pzrc_m_EventOverlapRadiusCells = "Event Overlap Min Distance (cells)",
+Sandbox_pzrc_m_EventOverlapRadiusCells_tooltip = "Minimum distance between two active events. Default: 30.",
+
+Sandbox_pzrc_m_EventCleanupRadiusCells = "Event Cleanup Radius (cells)",
+Sandbox_pzrc_m_EventCleanupRadiusCells_tooltip = "Player proximity that blocks event cleanup (so it doesn't despawn in plain sight). Default: 20.",
+
+Sandbox_pzrc_m_LibraryRestockIntervalMinutes = "Library Restock Interval (minutes)",
+Sandbox_pzrc_m_LibraryRestockIntervalMinutes_tooltip = "Real-time minutes between library shelf restock ticks. Default: 5.",
+
+Sandbox_pzrc_m_InfiniteGenValidateIntervalSeconds = "Infinite Gen Validate Interval (sec)",
+Sandbox_pzrc_m_InfiniteGenValidateIntervalSeconds_tooltip = "Real-time seconds between integrity checks of infinite generators. Default: 60.",
+
+Sandbox_pzrc_m_FuelPumpMaxCapacity = "Fuel Pump Max Capacity",
+Sandbox_pzrc_m_FuelPumpMaxCapacity_tooltip = "Maximum fuel per pump refill in the safe zone. Default: 14000.",
+
+}

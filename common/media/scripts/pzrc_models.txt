@@ -1,0 +1,122 @@
+module PZRCVehicles {
+    model airdrop {
+        mesh = vehicles/airdrop,
+        shader = vehicle_multiuv,
+        invertX = FALSE,
+        scale = 0.01,
+    }
+
+    model Vehicle_FEMASupplyDrop {
+        mesh = vehicles/Vehicle_FEMASupplyDrop,
+        shader = vehicle_multiuv,
+        invertX = FALSE,
+        scale = 0.01,
+    }
+
+    model Vehicle_SurvivorSupplyDrop {
+        mesh = vehicles/Vehicle_SurvivorSupplyDrop,
+        shader = vehicle_multiuv,
+        invertX = FALSE,
+        scale = 0.01,
+    }
+
+    model Vehicle_UH60Crash {
+        mesh = vehicles/Vehicle_UH60Crash,
+        shader = vehicle_norandom_multiuv,
+        invertX = FALSE,
+        scale = 0.01,
+    }
+
+    model Vehicle_Bell206Fuselage {
+        mesh = vehicles/Vehicle_Bell206Fuselage,
+        shader = vehicle_norandom_multiuv,
+        invertX = FALSE,
+        scale = 0.01,
+    }
+
+    model Vehicle_UH60Tail {
+        mesh = vehicles/Vehicle_UH60Tail,
+        shader = vehicle_norandom_multiuv,
+        invertX = FALSE,
+        scale = 0.01,
+    }
+
+    model Vehicle_Bell206Tail {
+        mesh = vehicles/Vehicle_Bell206Tail,
+        shader = vehicle_norandom_multiuv,
+        invertX = FALSE,
+        scale = 0.01,
+    }
+
+    model SZ_UH60DoorGreen {
+        mesh = WorldItems/UH60Door,
+        texture = WorldItems/UH60Green,
+        scale = 1.0,
+    }
+
+    model SZ_UH60DoorDesert {
+        mesh = WorldItems/UH60Door,
+        texture = WorldItems/UH60Desert,
+        scale = 1.0,
+    }
+
+    model SZ_UH60DoorMedevac {
+        mesh = WorldItems/UH60Door,
+        texture = WorldItems/UH60Medevac,
+        scale = 1.0,
+    }
+
+    model SZ_UH60WindowGreen {
+        mesh = WorldItems/UH60CrewWindow,
+        texture = WorldItems/UH60Green,
+        scale = 1.0,
+    }
+
+    model SZ_UH60WindowDesert {
+        mesh = WorldItems/UH60CrewWindow,
+        texture = WorldItems/UH60Desert,
+        scale = 1.0,
+    }
+
+    model SZ_UH60ElevatorGreen {
+        mesh = WorldItems/UH60Elevator,
+        texture = WorldItems/UH60Green,
+        scale = 1.0,
+    }
+
+    model SZ_UH60ElevatorDesert {
+        mesh = WorldItems/UH60Elevator,
+        texture = WorldItems/UH60Desert,
+        scale = 1.0,
+    }
+
+    model SZ_UH1HRotorBlade {
+        mesh = WorldItems/UH1HRotorBlade,
+        texture = WorldItems/UH1HRotorBlade,
+        scale = 1.0,
+    }
+
+    model SZ_Bell206RotorBlade1 {
+        mesh = WorldItems/Bell206RotorBlade1,
+        texture = WorldItems/Bell206RotorBlade,
+        scale = 1.0,
+    }
+
+    model SZ_Bell206RotorBlade2 {
+        mesh = WorldItems/Bell206RotorBlade2,
+        texture = WorldItems/Bell206RotorBlade,
+        scale = 1.0,
+    }
+
+    model SZ_Bell206TailBlade {
+        mesh = WorldItems/Bell206TailBlade,
+        texture = WorldItems/Bell206TailBlade,
+        scale = 1.0,
+    }
+
+    model SZ_Bell206HalfSkirt {
+        mesh = WorldItems/Bell206HalfSkirt,
+        texture = WorldItems/Bell206HalfSkirt,
+        scale = 1.0,
+    }
+}
