@@ -152,6 +152,10 @@ local function onContainerUpdate(container)
 end
 Events.OnContainerUpdate.Add(function(container) pcall(onContainerUpdate, container) end)
 
-if PZRC_VehicleClaim.isEnabled() then
-    print("[PZRC_VehicleClaim] Client hooks installed")
-end
+-- Init-log deferred to OnGameStart — SandboxVars are populated by then,
+-- whereas at module-require time on client they may still be empty.
+Events.OnGameStart.Add(function()
+    if PZRC_VehicleClaim.isEnabled() then
+        print("[PZRC_VehicleClaim] Client hooks installed")
+    end
+end)

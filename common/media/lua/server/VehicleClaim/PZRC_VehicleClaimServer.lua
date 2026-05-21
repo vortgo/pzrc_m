@@ -100,9 +100,16 @@ local function onTick()
 end
 
 Events.OnTickEvenPaused.Add(onTick)
-if PZRC_VehicleClaim.isEnabled() then
-    log("VehicleClaim server initialized (radius=" ..
-        tostring(PZRC_Config.VEHICLE_CLAIM_RADIUS) ..
-        " around " .. tostring(PZRC_Config.BASE_X) .. "," ..
-        tostring(PZRC_Config.BASE_Y) .. ")")
-end
+
+-- Init-log is deferred to OnServerStarted because SandboxVars aren't fully
+-- populated at module-require time on dedicated server. By the time
+-- OnServerStarted fires, SandboxVars.pzrc_m.EnableVehicleClaim reflects
+-- the true configured value (file or default).
+Events.OnServerStarted.Add(function()
+    if PZRC_VehicleClaim.isEnabled() then
+        log("VehicleClaim server initialized (radius=" ..
+            tostring(PZRC_Config.VEHICLE_CLAIM_RADIUS) ..
+            " around " .. tostring(PZRC_Config.BASE_X) .. "," ..
+            tostring(PZRC_Config.BASE_Y) .. ")")
+    end
+end)
