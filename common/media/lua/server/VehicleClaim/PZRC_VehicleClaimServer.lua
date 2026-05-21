@@ -77,6 +77,8 @@ end
 local lastTickMs = 0
 
 local function onTick()
+    if not PZRC_VehicleClaim.isEnabled() then return end
+
     local now = getTimestampMs()
     if now - lastTickMs < TICK_THROTTLE_MS then return end
     lastTickMs = now

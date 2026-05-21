@@ -19,6 +19,13 @@ PZRC_VehicleClaim.OWNERS_KEY      = "PZRC_Owners"        -- array of SteamIDs
 PZRC_VehicleClaim.OWNER_NAMES_KEY = "PZRC_OwnerNames"    -- parallel array of usernames (display only)
 PZRC_VehicleClaim.WAS_IN_SZ_KEY   = "PZRC_WasInSZ"       -- bool — last observed SZ state
 
+--- Feature flag. Default OFF — feature ships on prod disabled and only
+--- activates when an admin flips EnableVehicleClaim in sandbox options.
+--- Used as the FIRST check in every hook/handler so disabled = no-op.
+function PZRC_VehicleClaim.isEnabled()
+    return PZRC_Config.sbox("EnableVehicleClaim", false) == true
+end
+
 --- Squared distance from (x, y) to SZ center vs radius² — cheaper than sqrt.
 function PZRC_VehicleClaim.isInSZ(x, y)
     local cx = PZRC_Config.BASE_X or 9492
@@ -80,6 +87,7 @@ end
 --- Outside SZ → free. Inside SZ + admin → free. Inside SZ + empty owners → free.
 --- Inside SZ + claimed → owner-only.
 function PZRC_VehicleClaim.isAccessible(vehicle, player)
+    if not PZRC_VehicleClaim.isEnabled() then return true end
     if not vehicle or not player then return true end
     if PZRC_VehicleClaim.isAdminLike(player) then return true end
     if not PZRC_VehicleClaim.isVehicleInSZ(vehicle) then return true end

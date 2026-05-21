@@ -20,6 +20,14 @@ option pzrc_m.BaseY
     translation = PZRC_BaseY,
 }
 
+option pzrc_m.EnableVehicleClaim
+{
+    type = boolean,
+    default = false,
+    page = PZRC,
+    translation = PZRC_EnableVehicleClaim,
+}
+
 option pzrc_m.VehicleClaimRadius
 {
     type = integer,

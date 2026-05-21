@@ -29,11 +29,15 @@ local function block(vehicle, character)
 end
 
 -- ----- ISVehicleMenu hooks (radial / context-menu callbacks) ------------
+-- Each wrapper short-circuits to _orig immediately when the feature flag
+-- is off, so a disabled mod behaves like an absent one even if the wrapper
+-- itself has bugs.
 
 local function hookISVehicleMenuFunc(fname, vehicleArg)
     if not ISVehicleMenu or not ISVehicleMenu[fname] then return end
     local _orig = ISVehicleMenu[fname]
     ISVehicleMenu[fname] = function(playerObj, ...)
+        if not PZRC_VehicleClaim.isEnabled() then return _orig(playerObj, ...) end
         local args = { ... }
         local veh = args[vehicleArg]
         if veh and block(veh, playerObj) then return end
@@ -58,6 +62,9 @@ hookISVehicleMenuFunc("onAttachTrailer", 1)
 if ISVehicleMechanics and ISVehicleMechanics.new then
     local _origNew = ISVehicleMechanics.new
     ISVehicleMechanics.new = function(self, x, y, width, height, character, vehicle)
+        if not PZRC_VehicleClaim.isEnabled() then
+            return _origNew(self, x, y, width, height, character, vehicle)
+        end
         if vehicle and character and not PZRC_VehicleClaim.isAccessible(vehicle, character) then
             denyMessage(character, vehicle)
             return nil
@@ -72,6 +79,7 @@ local function hookActionByVehicleField(actionClass)
     if not actionClass or not actionClass.isValid then return end
     local _orig = actionClass.isValid
     actionClass.isValid = function(self)
+        if not PZRC_VehicleClaim.isEnabled() then return _orig(self) end
         local veh = self.vehicle
         if not veh and self.part and self.part.getVehicle then
             veh = self.part:getVehicle()
@@ -108,6 +116,7 @@ if ISInventoryTransferAction and ISInventoryTransferAction.isValid then
     end
 
     function ISInventoryTransferAction:isValid()
+        if not PZRC_VehicleClaim.isEnabled() then return _orig(self) end
         local who = self.character
         if who then
             local srcVeh = containerVehicle(self.srcContainer)
@@ -128,6 +137,7 @@ end
 -- ----- OnContainerUpdate — close UI for already-open vehicle containers -
 
 local function onContainerUpdate(container)
+    if not PZRC_VehicleClaim.isEnabled() then return end
     if not container or not container.getVehicle then return end
     local ok, veh = pcall(container.getVehicle, container)
     if not ok or not veh then return end

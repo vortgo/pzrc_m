@@ -8,6 +8,9 @@ Sandbox_pzrc_m_BaseX_tooltip = "World X coordinate of the safe zone base. Substi
 Sandbox_pzrc_m_BaseY = "Safe Zone Base Y",
 Sandbox_pzrc_m_BaseY_tooltip = "World Y coordinate of the safe zone base. Default: 11190.",
 
+Sandbox_pzrc_m_EnableVehicleClaim = "Enable Vehicle Claim (safe zone)",
+Sandbox_pzrc_m_EnableVehicleClaim_tooltip = "EXPERIMENTAL. When enabled, vehicles that cross into the safe zone (radius VehicleClaimRadius around BaseX/BaseY) are automatically claimed for their current driver and passengers. Other players cannot enter, smash, hotwire, repair, lock, sleep in, attach trailer to, or access containers of claimed vehicles while in the safe zone. Outside the safe zone vanilla behaviour applies. Admins always bypass. Default: OFF.",
+
 Sandbox_pzrc_m_VehicleClaimRadius = "Vehicle Protection Radius (tiles)",
 Sandbox_pzrc_m_VehicleClaimRadius_tooltip = "Radius (in tiles) around BaseX/BaseY where vehicles get auto-claimed for their drivers/passengers and are protected from other players. Independent from the visual map marker. Default: 90.",
 
