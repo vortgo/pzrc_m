@@ -95,8 +95,50 @@ end
 hookActionByVehicleField(ISInstallVehiclePart)
 hookActionByVehicleField(ISUninstallVehiclePart)
 hookActionByVehicleField(ISRepairVehiclePartAction)
-hookActionByVehicleField(ISTakeGasFromVehicle)
-hookActionByVehicleField(ISAddGasFromPump)
+-- Gasoline: PZ classes are *Gasoline*, not *Gas* (earlier names were wrong
+-- and the hooks were silently no-op).
+hookActionByVehicleField(ISTakeGasolineFromVehicle)
+hookActionByVehicleField(ISAddGasolineToVehicle)
+
+-- ----- Trailer attach / detach ------------------------------------------
+-- ISAttachTrailerToVehicle.vehicleA = the towing vehicle (player's).
+-- ISAttachTrailerToVehicle.vehicleB = the trailer being attached.
+-- Both must be accessible — otherwise someone could hitch a foreign claimed
+-- car to their own and drive away. ISDetachTrailerFromVehicle has a single
+-- .vehicle field (the towing one); checking that is enough.
+
+if ISAttachTrailerToVehicle and ISAttachTrailerToVehicle.isValid then
+    local _orig = ISAttachTrailerToVehicle.isValid
+    ISAttachTrailerToVehicle.isValid = function(self)
+        if not PZRC_VehicleClaim.isEnabled() then return _orig(self) end
+        local who = self.character
+        if who then
+            if self.vehicleA and not PZRC_VehicleClaim.isAccessible(self.vehicleA, who) then
+                denyMessage(who, self.vehicleA)
+                return false
+            end
+            if self.vehicleB and not PZRC_VehicleClaim.isAccessible(self.vehicleB, who) then
+                denyMessage(who, self.vehicleB)
+                return false
+            end
+        end
+        return _orig(self)
+    end
+end
+
+if ISDetachTrailerFromVehicle and ISDetachTrailerFromVehicle.isValid then
+    local _orig = ISDetachTrailerFromVehicle.isValid
+    ISDetachTrailerFromVehicle.isValid = function(self)
+        if not PZRC_VehicleClaim.isEnabled() then return _orig(self) end
+        if self.vehicle and self.character
+            and not PZRC_VehicleClaim.isAccessible(self.vehicle, self.character)
+        then
+            denyMessage(self.character, self.vehicle)
+            return false
+        end
+        return _orig(self)
+    end
+end
 
 -- ----- Inventory transfer (trunk / glove box) ---------------------------
 -- Vehicles can appear as srcContainer or destContainer. ItemContainer has

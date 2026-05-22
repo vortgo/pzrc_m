@@ -38,6 +38,13 @@ local function claimVehicle(vehicle)
     md[PZRC_VehicleClaim.OWNERS_KEY]      = owners
     md[PZRC_VehicleClaim.OWNER_NAMES_KEY] = names
     vehicle:transmitModData()
+    -- Force the vehicle table to flush to disk now so ownership survives
+    -- server restart. Without this, transmitModData syncs to clients but
+    -- the vehicle's persistent row only saves on next periodic write —
+    -- if the server crashes before that, owners are lost.
+    if vehicle.saveToVehicleTable then
+        pcall(vehicle.saveToVehicleTable, vehicle)
+    end
 
     if #owners > 0 then
         log("Claimed vehicle for " .. #owners .. " player(s): " .. table.concat(names, ", "))
