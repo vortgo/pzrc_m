@@ -79,6 +79,172 @@ local function checkVehicle(vehicle)
     end
 end
 
+-- ----- Damage protection (only for owned vehicles INSIDE the safe zone) -
+-- Approach borrowed from VehicleClaimWG: every tick snapshot each protected
+-- vehicle's per-part conditions in an in-memory cache. If condition drops
+-- AND an unauthorized player is nearby (the "griefer"), revert. If only
+-- zombies are around (no live players nearby), accept the new condition
+-- (so zombie attacks on a parked car still chip away). If an authorized
+-- driver is at the wheel, accept and refresh the snapshot (normal usage,
+-- crashes etc.).
+--
+-- Cache is in-memory only (not modData) — rebuilt on server restart from
+-- whatever post-restart state the vehicle is in, which is fine: the worst
+-- case is a brief window where damage from the very first observation is
+-- accepted as the new baseline.
+
+local DMG_THREAT_RADIUS    = 5     -- tiles (Manhattan distance)
+local DMG_REPAIR_DELAY_MS  = 2000  -- batch hits within this window before revert
+
+local stateCache = {}              -- [vehicle:getId()] = { parts = { [partId]=cond,... }, repairDue = ms }
+
+local function snapshotVehicle(vehicle)
+    local vId = vehicle:getId()
+    local parts = {}
+    local count = vehicle:getPartCount() or 0
+    for i = 0, count - 1 do
+        local part = vehicle:getPartByIndex(i)
+        if part then
+            parts[part:getId()] = part:getCondition()
+        end
+    end
+    stateCache[vId] = stateCache[vId] or {}
+    stateCache[vId].parts = parts
+    stateCache[vId].repairDue = nil
+end
+
+local function revertVehicleDamage(vehicle, cached)
+    for partId, cachedCond in pairs(cached.parts) do
+        local part = vehicle:getPartById(partId)
+        if part then
+            local curCond = part:getCondition()
+            if curCond < cachedCond then
+                -- Restore removed/destroyed part (uninstalled engine, etc).
+                local invItem = part.getInventoryItem and part:getInventoryItem()
+                if not invItem and cachedCond > 0 and part.getItemType then
+                    local types = part:getItemType()
+                    if types and not types:isEmpty() then
+                        local typeName = types:get(0)
+                        local newItem = instanceItem(typeName)
+                        if newItem then
+                            newItem:setCondition(cachedCond)
+                            part:setInventoryItem(newItem)
+                            if vehicle.transmitPartItem then
+                                pcall(vehicle.transmitPartItem, vehicle, part)
+                            end
+                        end
+                    end
+                end
+                part:setCondition(cachedCond)
+                -- Un-smash window if we restored a windowed part.
+                local window = part.getWindow and part:getWindow()
+                if window and cachedCond > 0 and window.setSmashed then
+                    window:setSmashed(false)
+                    if vehicle.transmitPartWindow then
+                        pcall(vehicle.transmitPartWindow, vehicle, part)
+                    end
+                end
+                if vehicle.transmitPartCondition then
+                    pcall(vehicle.transmitPartCondition, vehicle, part)
+                end
+            end
+        end
+    end
+end
+
+local function checkAndRestore(vehicle)
+    local vId = vehicle:getId()
+    local cached = stateCache[vId]
+    if not cached or not cached.parts then
+        snapshotVehicle(vehicle)
+        return
+    end
+
+    local damaged = false
+    for partId, cachedCond in pairs(cached.parts) do
+        local part = vehicle:getPartById(partId)
+        if part and part:getCondition() < cachedCond then
+            damaged = true
+            break
+        end
+    end
+
+    if not damaged then
+        cached.repairDue = nil
+        return
+    end
+
+    -- Damage detected — batch repair so multi-hit bursts apply in one revert.
+    local now = getTimestampMs()
+    if not cached.repairDue then
+        cached.repairDue = now + DMG_REPAIR_DELAY_MS
+        return
+    end
+    if now < cached.repairDue then return end
+
+    revertVehicleDamage(vehicle, cached)
+    cached.repairDue = nil
+end
+
+local function damageProtectionPass(onlinePlayers)
+    local cell = getCell()
+    if not cell then return end
+    local vehicles = cell:getVehicles()
+    if not vehicles then return end
+
+    local pCount = (onlinePlayers and onlinePlayers:size()) or 0
+
+    local it = vehicles:iterator()
+    while it:hasNext() do
+        local v = it:next()
+        if v and v.getModData then
+            local owners  = PZRC_VehicleClaim.getOwners(v)
+            local hasOwn  = owners and #owners > 0
+            local inSZ    = PZRC_VehicleClaim.isVehicleInSZ(v)
+
+            if not (hasOwn and inSZ) then
+                -- Not eligible — drop any stale cache entry.
+                if stateCache[v:getId()] then stateCache[v:getId()] = nil end
+            else
+                -- Driver authorized?
+                local driver = (v.getDriver and v:getDriver()) or
+                               (v.getCharacter and v:getCharacter(0))
+                local authDriver = driver and PZRC_VehicleClaim.isAccessible(v, driver)
+
+                -- Threat detection: any unauthorized live player in DMG_THREAT_RADIUS.
+                local threat = false
+                if not authDriver and pCount > 0 then
+                    local vX, vY = v:getX(), v:getY()
+                    for i = 0, pCount - 1 do
+                        local p = onlinePlayers:get(i)
+                        if p and not p:isDead() and p.getX then
+                            local d = math.abs(p:getX() - vX) + math.abs(p:getY() - vY)
+                            if d < DMG_THREAT_RADIUS
+                                and not PZRC_VehicleClaim.isAccessible(v, p)
+                            then
+                                threat = true
+                                break
+                            end
+                        end
+                    end
+                end
+
+                if authDriver then
+                    -- Legitimate use — keep baseline fresh.
+                    snapshotVehicle(v)
+                elseif threat then
+                    -- SHIELD UP — revert any drop versus cached state.
+                    checkAndRestore(v)
+                else
+                    -- No threat, no driver — accept current as new baseline
+                    -- (lets natural zombie damage through).
+                    snapshotVehicle(v)
+                end
+            end
+        end
+    end
+end
+
 -- ----- Tick -------------------------------------------------------------
 
 local lastTickMs = 0
@@ -93,6 +259,7 @@ local function onTick()
     local players = getOnlinePlayers()
     if not players then return end
 
+    -- 1. SZ-entry detector (only vehicles with an occupant).
     local processed = {}
     for i = 0, players:size() - 1 do
         local p = players:get(i)
@@ -104,6 +271,9 @@ local function onTick()
             end
         end
     end
+
+    -- 2. Damage protection (all owned vehicles in SZ, including empty parked).
+    damageProtectionPass(players)
 end
 
 Events.OnTickEvenPaused.Add(onTick)
