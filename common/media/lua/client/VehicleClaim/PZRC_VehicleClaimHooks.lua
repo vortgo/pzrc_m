@@ -28,6 +28,37 @@ local function block(vehicle, character)
     return true
 end
 
+-- Walk up the container nesting chain to find the owning vehicle, if any.
+-- A backpack sitting in a vehicle trunk has its OWN ItemContainer for its
+-- contents, and that container has no getVehicle() of its own — but its
+-- containingItem is the backpack, whose container IS the trunk. So we hop
+-- container → containingItem → item:getContainer() until we either find a
+-- vehicle or run out. This catches all nesting depths (bag-in-bag-in-trunk).
+local function containerOwningVehicle(container)
+    if not container then return nil end
+    local cur = container
+    for _ = 1, 20 do  -- guard against pathological cycles
+        if cur.getVehicle then
+            local ok, veh = pcall(cur.getVehicle, cur)
+            if ok and veh then return veh end
+        end
+        if cur.getVehiclePart then
+            local ok, part = pcall(cur.getVehiclePart, cur)
+            if ok and part and part.getVehicle then
+                local ok2, veh = pcall(part.getVehicle, part)
+                if ok2 and veh then return veh end
+            end
+        end
+        if not cur.getContainingItem then return nil end
+        local okI, item = pcall(cur.getContainingItem, cur)
+        if not okI or not item or not item.getContainer then return nil end
+        local okC, parent = pcall(item.getContainer, item)
+        if not okC or not parent or parent == cur then return nil end
+        cur = parent
+    end
+    return nil
+end
+
 -- ----- ISVehicleMenu hooks (radial / context-menu callbacks) ------------
 -- Each wrapper short-circuits to _orig immediately when the feature flag
 -- is off, so a disabled mod behaves like an absent one even if the wrapper
@@ -149,24 +180,16 @@ end
 
 if ISInventoryTransferAction and ISInventoryTransferAction.isValid then
     local _orig = ISInventoryTransferAction.isValid
-
-    local function containerVehicle(container)
-        if not container or not container.getVehicle then return nil end
-        local ok, veh = pcall(container.getVehicle, container)
-        if ok then return veh end
-        return nil
-    end
-
     function ISInventoryTransferAction:isValid()
         if not PZRC_VehicleClaim.isEnabled() then return _orig(self) end
         local who = self.character
         if who then
-            local srcVeh = containerVehicle(self.srcContainer)
+            local srcVeh = containerOwningVehicle(self.srcContainer)
             if srcVeh and not PZRC_VehicleClaim.isAccessible(srcVeh, who) then
                 denyMessage(who, srcVeh)
                 return false
             end
-            local dstVeh = containerVehicle(self.destContainer)
+            local dstVeh = containerOwningVehicle(self.destContainer)
             if dstVeh and not PZRC_VehicleClaim.isAccessible(dstVeh, who) then
                 denyMessage(who, dstVeh)
                 return false
@@ -180,9 +203,8 @@ end
 
 local function onContainerUpdate(container)
     if not PZRC_VehicleClaim.isEnabled() then return end
-    if not container or not container.getVehicle then return end
-    local ok, veh = pcall(container.getVehicle, container)
-    if not ok or not veh then return end
+    local veh = containerOwningVehicle(container)
+    if not veh then return end
     local player = getPlayer()
     if not player then return end
     if PZRC_VehicleClaim.isAccessible(veh, player) then return end
