@@ -31,8 +31,21 @@ end
 -- BEFORE ISWorldObjectContextMenuLogic.fetch / createMenuEntries iterate
 -- the list (line ~182 in vanilla createMenu), so vehicle options never
 -- get added to the context in the first place.
+--
+-- Installed on OnGameStart (not at file load) to guarantee the wrap runs
+-- after every other mod has had its chance to define/replace createMenu.
 
-if ISWorldObjectContextMenu and ISWorldObjectContextMenu.createMenu then
+local function installCreateMenuWrap()
+    if not ISWorldObjectContextMenu or not ISWorldObjectContextMenu.createMenu then
+        print("[PZRC_VehicleClaim] WARN: ISWorldObjectContextMenu.createMenu not present, "
+            .. "right-click filter NOT installed")
+        return
+    end
+    if ISWorldObjectContextMenu._PZRC_VehicleClaim_wrapped then
+        return  -- idempotent
+    end
+    ISWorldObjectContextMenu._PZRC_VehicleClaim_wrapped = true
+
     local _origCreateMenu = ISWorldObjectContextMenu.createMenu
     ISWorldObjectContextMenu.createMenu = function(player, worldobjects, x, y, test)
         if not PZRC_VehicleClaim.isEnabled() or not worldobjects then
@@ -44,7 +57,7 @@ if ISWorldObjectContextMenu and ISWorldObjectContextMenu.createMenu then
         end
 
         local filtered = {}
-        local hadHidden = false
+        local hidden = 0
         for i = 1, #worldobjects do
             local obj = worldobjects[i]
             local hide = false
@@ -54,17 +67,23 @@ if ISWorldObjectContextMenu and ISWorldObjectContextMenu.createMenu then
                 hide = true
             end
             if hide then
-                hadHidden = true
+                hidden = hidden + 1
             else
                 table.insert(filtered, obj)
             end
         end
-        if hadHidden then
+        if hidden > 0 then
+            print("[PZRC_VehicleClaim] filtered " .. hidden ..
+                  " inaccessible vehicle(s) from right-click menu")
             return _origCreateMenu(player, filtered, x, y, test)
         end
         return _origCreateMenu(player, worldobjects, x, y, test)
     end
+
+    print("[PZRC_VehicleClaim] right-click filter installed on ISWorldObjectContextMenu.createMenu")
 end
+
+Events.OnGameStart.Add(installCreateMenuWrap)
 
 -- ----- "Owners: X, Y" info line for accessible vehicles -----------------
 -- Runs only when the vehicle survived the filter above (i.e. the player has
