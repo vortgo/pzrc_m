@@ -37,7 +37,7 @@ end
 local function containerOwningVehicle(container)
     if not container then return nil end
     local cur = container
-    for _ = 1, 20 do  -- guard against pathological cycles
+    for _ = 1, 3 do  -- bag-in-bag-in-trunk is enough; deeper nesting is pathological
         if cur.getVehicle then
             local ok, veh = pcall(cur.getVehicle, cur)
             if ok and veh then return veh end
