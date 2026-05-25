@@ -85,6 +85,40 @@ end
 
 Events.OnGameStart.Add(installCreateMenuWrap)
 
+-- ----- Vehicle-menu second-line defence ---------------------------------
+-- ISVehicleMenu.OnFillWorldObjectContextMenu finds the vehicle by direct
+-- IsoObjectPicker.Instance:PickVehicle(x, y) call — that path NEVER touches
+-- the worldobjects list, so the createMenu filter above doesn't catch it.
+-- Wrapping ISVehicleMenu.FillMenuOutsideVehicle is the chokepoint: every
+-- vehicle-related option (vanilla + every mod that hooked it, including
+-- VRO Salvage / "Утилизировать транспорт" / 10YrsVehicles add-ons) is added
+-- inside this function. Returning early prevents ALL of them.
+
+local function installFillMenuOutsideVehicleWrap()
+    if not ISVehicleMenu or not ISVehicleMenu.FillMenuOutsideVehicle then
+        print("[PZRC_VehicleClaim] WARN: ISVehicleMenu.FillMenuOutsideVehicle not present")
+        return
+    end
+    if ISVehicleMenu._PZRC_VehicleClaim_fillMenu_wrapped then return end
+    ISVehicleMenu._PZRC_VehicleClaim_fillMenu_wrapped = true
+
+    local _orig = ISVehicleMenu.FillMenuOutsideVehicle
+    ISVehicleMenu.FillMenuOutsideVehicle = function(player, context, vehicle, test)
+        if PZRC_VehicleClaim.isEnabled() and vehicle then
+            local plObj = getSpecificPlayer(player)
+            if plObj and not PZRC_VehicleClaim.isAccessible(vehicle, plObj) then
+                -- Don't call original — no vehicle options at all.
+                return
+            end
+        end
+        return _orig(player, context, vehicle, test)
+    end
+
+    print("[PZRC_VehicleClaim] vehicle-menu filter installed on ISVehicleMenu.FillMenuOutsideVehicle")
+end
+
+Events.OnGameStart.Add(installFillMenuOutsideVehicleWrap)
+
 -- ----- "Owners: X, Y" info line for accessible vehicles -----------------
 -- Runs only when the vehicle survived the filter above (i.e. the player has
 -- access to it). Useful for the owner / allowed riders to see who else is

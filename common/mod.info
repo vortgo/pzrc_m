@@ -6,5 +6,5 @@ pack=szcrate
 pack=planb
 tiledef=tiledefinitions 200
 tiledef=planb 5641
-modversion=0.4.3
+modversion=0.4.4
 versionMin=42.14

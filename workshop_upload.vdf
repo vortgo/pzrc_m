@@ -13,7 +13,7 @@
     "title"            "PZRC Mod"
     "description"      "Standalone server-side toolkit for PZ B42 Multiplayer: starter kit crate, ration fridge, dynamic radio events, library, infinite generator, fuel pump refill, and a welcome note. All logic ships inside the mod — no manual file drops to ~/Zomboid/Lua/ required."
 
-    "changenote"       "0.4.3 — Deferred ISWorldObjectContextMenu.createMenu wrap installation to Events.OnGameStart so it survives load-order races with other client mods. Wrap is idempotent and logs install+filter events to console.txt for easier diagnosis. // 0.4.2 — Right-click on a non-owner's claimed vehicle shows NO menu at all. // 0.4.1 — Nested-container fix (bag-in-trunk). // 0.4.0 — Safe-zone vehicle-claim, damage protection, library Place Item, FuelPump min 500, abandoned-vehicle event fixes."
+    "changenote"       "0.4.4 — Closed the second context-menu path: ISVehicleMenu.OnFillWorldObjectContextMenu finds the vehicle via direct IsoObjectPicker.Instance:PickVehicle(x, y) bypassing worldobjects, so the 0.4.2 createMenu filter didn't catch it. Now wrapping ISVehicleMenu.FillMenuOutsideVehicle too — third-party mods that hook it (e.g. Vehicle Repair Overhaul's 'Утилизировать транспорт', 10YrsVehicles add-ons) are fully blocked for non-owners, no greyed options, no menu lines, nothing. // 0.4.3 — Deferred wrap installation to OnGameStart for load-order safety. // 0.4.2 — Right-click filter on createMenu. // 0.4.1 — Nested-container fix. // 0.4.0 — Safe-zone vehicle-claim, damage protection, library, FuelPump, abandoned-vehicle event."
 
     "tags"
     {
