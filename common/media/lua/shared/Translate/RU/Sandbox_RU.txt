@@ -14,6 +14,9 @@ Sandbox_pzrc_m_EnableVehicleClaim_tooltip = "ЭКСПЕРИМЕНТАЛЬНО. �
 Sandbox_pzrc_m_VehicleClaimRadius = "Радиус защиты машин (тайлы)",
 Sandbox_pzrc_m_VehicleClaimRadius_tooltip = "Радиус в тайлах вокруг BaseX/BaseY, где машины автоматически закрепляются за водителем/пассажирами и защищены от других игроков. Не связан с визуальным маркером на карте. По умолчанию: 90.",
 
+Sandbox_pzrc_m_VehicleClaimDurationMin = "Длительность привата машин (мин)",
+Sandbox_pzrc_m_VehicleClaimDurationMin_tooltip = "Реальные минуты, в течение которых действует приват после въезда в безопасную зону. После истечения машина становится свободной для всех (до следующего захвата при новом въезде). Машины, захваченные до появления этой функции, остаются вечными. По умолчанию: 240 (4 часа).",
+
 Sandbox_pzrc_m_RadioFrequencyKHz = "Частота радио (кГц)",
 Sandbox_pzrc_m_RadioFrequencyKHz_tooltip = "Частота вещания в кГц (95200 = 95.2 МГц). По умолчанию: 95200.",
 

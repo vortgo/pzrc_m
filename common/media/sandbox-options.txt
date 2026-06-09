@@ -38,6 +38,16 @@ option pzrc_m.VehicleClaimRadius
     translation = PZRC_VehicleClaimRadius,
 }
 
+option pzrc_m.VehicleClaimDurationMin
+{
+    type = integer,
+    min = 1,
+    max = 43200,
+    default = 240,
+    page = PZRC,
+    translation = PZRC_VehicleClaimDurationMin,
+}
+
 option pzrc_m.RadioFrequencyKHz
 {
     type = integer,

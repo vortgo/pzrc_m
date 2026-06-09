@@ -14,6 +14,9 @@ Sandbox_pzrc_m_EnableVehicleClaim_tooltip = "EXPERIMENTAL. When enabled, vehicle
 Sandbox_pzrc_m_VehicleClaimRadius = "Vehicle Protection Radius (tiles)",
 Sandbox_pzrc_m_VehicleClaimRadius_tooltip = "Radius (in tiles) around BaseX/BaseY where vehicles get auto-claimed for their drivers/passengers and are protected from other players. Independent from the visual map marker. Default: 90.",
 
+Sandbox_pzrc_m_VehicleClaimDurationMin = "Vehicle Claim Duration (minutes)",
+Sandbox_pzrc_m_VehicleClaimDurationMin_tooltip = "Real-time minutes a vehicle claim stays active after entering the safe zone. Once it expires the vehicle becomes free for everyone (until claimed again on the next entry). Vehicles claimed before this feature existed stay permanent. Default: 240 (4 hours).",
+
 Sandbox_pzrc_m_RadioFrequencyKHz = "Radio Frequency (kHz)",
 Sandbox_pzrc_m_RadioFrequencyKHz_tooltip = "Broadcast frequency in kHz (95200 = 95.2 MHz). Default: 95200.",
 

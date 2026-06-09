@@ -775,7 +775,14 @@ function PZRC_EventUtils.generateLootDistributed(containers, lootTableName, even
                 end
                 if itemId then
                     local target = containers[idx]
-                    local added = target.container:AddItem(itemId)
+                    -- container:AddItem can throw a Kahlua exception in B42 (see
+                    -- generateLoot). Catch per-item so one bad item can't abort
+                    -- the whole spawn() call.
+                    local ok, added = pcall(function() return target.container:AddItem(itemId) end)
+                    if not ok then
+                        log("AddItem EXCEPTION on '" .. tostring(itemId) .. "': " .. tostring(added))
+                        added = nil
+                    end
                     if added then
                         if eventId then
                             added:getModData().PZRC_EventId = eventId

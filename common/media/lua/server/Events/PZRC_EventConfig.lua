@@ -101,9 +101,9 @@ PZRC_EventConfig.Loot = {
         { item = "Base.TailoringMag5",        chance = 0.10, min = 1, max = 1 },
         { item = "Base.FarmingMag7",          chance = 0.10, min = 1, max = 1 },
         { item = "Base.TailoringMag10",       chance = 0.10, min = 1, max = 1 },
-        { item = "Base.MechanicMag3",         chance = 0.10, min = 1, max = 1 },
-        { item = "Base.MechanicMag2",         chance = 0.10, min = 1, max = 1 },
-        { item = "Base.MechanicMag1",         chance = 0.10, min = 1, max = 1 },
+        -- MechanicMag1/2/3 removed: their OnCreate (onCreateRecipeMagazine) path
+        -- trips a Kahlua object-pool bug in B42 during container:AddItem, which
+        -- throws a NPE that escapes pcall and aborts the whole event spawn.
         { item = "Base.CannedChili",          chance = 0.20, min = 1, max = 2 },
         { item = "Base.CannedPeas",           chance = 0.20, min = 1, max = 2 },
         { item = "Base.CannedPotato2",        chance = 0.20, min = 1, max = 2 },
@@ -239,9 +239,9 @@ PZRC_EventConfig.Loot = {
         { item = "Base.Screwdriver",          chance = 0.40, min = 1, max = 1 },
         { item = "Base.TinnedBeans",          chance = 0.30, min = 1, max = 2 },
         { item = "Base.WaterBottle",          chance = 0.30, min = 1, max = 1 },
-        { item = "Base.MechanicMag3",         chance = 0.10, min = 1, max = 1 },
-        { item = "Base.MechanicMag2",         chance = 0.10, min = 1, max = 1 },
-        { item = "Base.MechanicMag1",         chance = 0.10, min = 1, max = 1 },
+        -- MechanicMag1/2/3 removed: their OnCreate (onCreateRecipeMagazine) path
+        -- trips a Kahlua object-pool bug in B42 during container:AddItem, which
+        -- throws a NPE that escapes pcall and aborts the whole event spawn.
         { item = "Base.CannedChili",          chance = 0.20, min = 1, max = 1 },
         { item = "Base.CannedPeas",           chance = 0.20, min = 1, max = 1 },
         { item = "Base.CannedPotato2",        chance = 0.20, min = 1, max = 1 },

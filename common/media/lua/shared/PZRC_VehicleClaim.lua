@@ -11,6 +11,12 @@ require "PZRC_Config"
 --
 -- "Reset on each entry": the owners list is REPLACED at every OUT→IN
 -- transition, not appended. Unclaimed (empty list) vehicles in SZ are free.
+--
+-- Temporary claims: each claim stores an expiry timestamp (PZRC_ClaimExpiry,
+-- absolute os.time() seconds = entry time + VEHICLE_CLAIM_DURATION_MIN). Once
+-- it passes, the claim is treated as free everywhere and the server clears it.
+-- Legacy claims made before this feature have NO expiry key → they stay
+-- permanent ("eternal"), so existing in-SZ vehicles keep their privacy.
 -- =========================================================================
 
 PZRC_VehicleClaim = PZRC_VehicleClaim or {}
@@ -18,6 +24,7 @@ PZRC_VehicleClaim = PZRC_VehicleClaim or {}
 PZRC_VehicleClaim.OWNERS_KEY      = "PZRC_Owners"        -- array of SteamIDs
 PZRC_VehicleClaim.OWNER_NAMES_KEY = "PZRC_OwnerNames"    -- parallel array of usernames (display only)
 PZRC_VehicleClaim.WAS_IN_SZ_KEY   = "PZRC_WasInSZ"       -- bool — last observed SZ state
+PZRC_VehicleClaim.EXPIRY_KEY      = "PZRC_ClaimExpiry"   -- number — os.time() when claim expires (nil = never/legacy)
 
 --- Feature flag. Default OFF — feature ships on prod disabled and only
 --- activates when an admin flips EnableVehicleClaim in sandbox options.
@@ -84,15 +91,38 @@ function PZRC_VehicleClaim.isOwner(vehicle, steamID)
     return false
 end
 
---- Outside SZ → free. Inside SZ + admin → free. Inside SZ + empty owners → free.
---- Inside SZ + claimed → owner-only.
+--- Absolute expiry timestamp (os.time() seconds) of the claim, or nil if the
+--- vehicle has no expiry stored (legacy/eternal claim).
+function PZRC_VehicleClaim.getClaimExpiry(vehicle)
+    if not vehicle or not vehicle.getModData then return nil end
+    local md = vehicle:getModData()
+    return md and md[PZRC_VehicleClaim.EXPIRY_KEY]
+end
+
+--- True only if an expiry is set AND it has passed. A nil expiry means the
+--- claim never expires (legacy vehicles claimed before this feature existed).
+function PZRC_VehicleClaim.isClaimExpired(vehicle)
+    local expiry = PZRC_VehicleClaim.getClaimExpiry(vehicle)
+    if expiry == nil then return false end
+    return os.time() > expiry
+end
+
+--- A claim is "active" if there are owners AND it hasn't expired. This is the
+--- single source of truth used by both access control and damage protection.
+function PZRC_VehicleClaim.hasActiveClaim(vehicle)
+    local owners = PZRC_VehicleClaim.getOwners(vehicle)
+    if not owners or #owners == 0 then return false end
+    return not PZRC_VehicleClaim.isClaimExpired(vehicle)
+end
+
+--- Outside SZ → free. Inside SZ + admin → free. Inside SZ + no active claim
+--- (empty owners or expired) → free. Inside SZ + active claim → owner-only.
 function PZRC_VehicleClaim.isAccessible(vehicle, player)
     if not PZRC_VehicleClaim.isEnabled() then return true end
     if not vehicle or not player then return true end
     if PZRC_VehicleClaim.isAdminLike(player) then return true end
     if not PZRC_VehicleClaim.isVehicleInSZ(vehicle) then return true end
-    local owners = PZRC_VehicleClaim.getOwners(vehicle)
-    if not owners or #owners == 0 then return true end
+    if not PZRC_VehicleClaim.hasActiveClaim(vehicle) then return true end
     return PZRC_VehicleClaim.isOwner(vehicle, PZRC_VehicleClaim.getPlayerSteamID(player))
 end
 

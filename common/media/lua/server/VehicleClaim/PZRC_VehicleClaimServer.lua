@@ -37,6 +37,14 @@ local function claimVehicle(vehicle)
     local md = vehicle:getModData()
     md[PZRC_VehicleClaim.OWNERS_KEY]      = owners
     md[PZRC_VehicleClaim.OWNER_NAMES_KEY] = names
+    -- Temporary claim: stamp an absolute expiry = now + configured minutes.
+    -- Empty entries clear the expiry so the slot is truly free.
+    if #owners > 0 then
+        local durationMin = PZRC_Config.VEHICLE_CLAIM_DURATION_MIN or 240
+        md[PZRC_VehicleClaim.EXPIRY_KEY] = os.time() + durationMin * 60
+    else
+        md[PZRC_VehicleClaim.EXPIRY_KEY] = nil
+    end
     vehicle:transmitModData()
     -- Force the vehicle table to flush to disk now so ownership survives
     -- server restart. Without this, transmitModData syncs to clients but
@@ -47,10 +55,25 @@ local function claimVehicle(vehicle)
     end
 
     if #owners > 0 then
-        log("Claimed vehicle for " .. #owners .. " player(s): " .. table.concat(names, ", "))
+        log("Claimed vehicle for " .. #owners .. " player(s): " .. table.concat(names, ", ")
+            .. " (expires in " .. tostring(PZRC_Config.VEHICLE_CLAIM_DURATION_MIN or 240) .. " min)")
     else
         log("Vehicle entered SZ empty — no claim")
     end
+end
+
+--- Drop an expired claim: clear owners/names/expiry so the vehicle becomes
+--- free for everyone. Legacy claims (no expiry stored) never reach here.
+local function clearExpiredClaim(vehicle)
+    local md = vehicle:getModData()
+    md[PZRC_VehicleClaim.OWNERS_KEY]      = {}
+    md[PZRC_VehicleClaim.OWNER_NAMES_KEY] = {}
+    md[PZRC_VehicleClaim.EXPIRY_KEY]      = nil
+    vehicle:transmitModData()
+    if vehicle.saveToVehicleTable then
+        pcall(vehicle.saveToVehicleTable, vehicle)
+    end
+    log("Claim expired — vehicle released")
 end
 
 --- Check one vehicle's SZ state. Stores PZRC_WasInSZ on the vehicle so the
@@ -198,8 +221,14 @@ local function damageProtectionPass(onlinePlayers)
     while it:hasNext() do
         local v = it:next()
         if v and v.getModData then
-            local owners  = PZRC_VehicleClaim.getOwners(v)
-            local hasOwn  = owners and #owners > 0
+            -- Release expired claims (owners present but past their expiry).
+            -- Legacy claims have no expiry → isClaimExpired is false → kept.
+            local owners = PZRC_VehicleClaim.getOwners(v)
+            if owners and #owners > 0 and PZRC_VehicleClaim.isClaimExpired(v) then
+                clearExpiredClaim(v)
+            end
+
+            local hasOwn  = PZRC_VehicleClaim.hasActiveClaim(v)
             local inSZ    = PZRC_VehicleClaim.isVehicleInSZ(v)
 
             if not (hasOwn and inSZ) then

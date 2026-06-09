@@ -137,6 +137,15 @@ local function onFillWorldObjectContextMenu(playerNum, context, worldObjects, te
     local names  = PZRC_VehicleClaim.getOwnerNames(vehicle)
     if owners and #owners > 0 then
         local label = "Owners: " .. ((names and #names > 0) and table.concat(names, ", ") or "?")
+        -- Append remaining time for temporary claims; legacy claims (no expiry)
+        -- have no countdown and read as permanent.
+        local expiry = PZRC_VehicleClaim.getClaimExpiry(vehicle)
+        if expiry then
+            local mins = math.ceil((expiry - os.time()) / 60)
+            if mins > 0 then
+                label = label .. " (" .. tostring(mins) .. " min left)"
+            end
+        end
         local info = context:addOption(label, nil, nil)
         info.notAvailable = true  -- gray it out, info-only
     end

@@ -324,17 +324,22 @@ function AbandonedVehicle.spawn(x, y, z, eventId)
     -- PickUpTruck → "TruckBedOpen". Перебор по getPartCount() + getItemContainer()
     -- автоматически ловит все варианты и игнорирует FluidContainer-части (бензобак,
     -- батарея, радио) у которых getItemContainer() возвращает nil.
-    local lootContainers = 0
+    -- Собираем все item-контейнеры машины и катаем таблицу ОДИН раз,
+    -- раскидывая предметы round-robin (generateLootDistributed). Раньше тут
+    -- был generateLoot в цикле — он прогонял всю таблицу НА КАЖДЫЙ контейнер,
+    -- из-за чего лут множился на их число ("куча лута").
+    local lootContainers = {}
     for i = 0, vehicle:getPartCount() - 1 do
         local p = vehicle:getPartByIndex(i)
         local c = p and p:getItemContainer()
         if c then
-            PZRC_EventUtils.generateLoot(c, "abandonedvehicle", eventId)
-            lootContainers = lootContainers + 1
+            table.insert(lootContainers, { container = c })
         end
     end
-    if lootContainers == 0 then
+    if #lootContainers == 0 then
         log("WARN: " .. vehicleType .. " has no item containers — loot skipped")
+    else
+        PZRC_EventUtils.generateLootDistributed(lootContainers, "abandonedvehicle", eventId)
     end
 
     local cx, cy, cz = sq:getX(), sq:getY(), sq:getZ()

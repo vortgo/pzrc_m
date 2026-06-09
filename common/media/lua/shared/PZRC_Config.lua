@@ -1,17 +1,19 @@
 PZRC_Config = PZRC_Config or {}
 
 PZRC_Config._defaults = {
-    BASE_X               = 9492,
-    BASE_Y               = 11190,
-    RADIO_FREQUENCY      = 95200,
-    VEHICLE_CLAIM_RADIUS = 90,
+    BASE_X                     = 9492,
+    BASE_Y                     = 11190,
+    RADIO_FREQUENCY            = 95200,
+    VEHICLE_CLAIM_RADIUS       = 90,
+    VEHICLE_CLAIM_DURATION_MIN = 240,   -- minutes a claim stays active (4h)
 }
 
 PZRC_Config._sboxKeys = {
-    BASE_X               = "BaseX",
-    BASE_Y               = "BaseY",
-    RADIO_FREQUENCY      = "RadioFrequencyKHz",
-    VEHICLE_CLAIM_RADIUS = "VehicleClaimRadius",
+    BASE_X                     = "BaseX",
+    BASE_Y                     = "BaseY",
+    RADIO_FREQUENCY            = "RadioFrequencyKHz",
+    VEHICLE_CLAIM_RADIUS       = "VehicleClaimRadius",
+    VEHICLE_CLAIM_DURATION_MIN = "VehicleClaimDurationMin",
 }
 
 setmetatable(PZRC_Config, {
