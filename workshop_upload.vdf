@@ -6,8 +6,10 @@
     // Leave 0 to create a new entry; set the assigned ID for updates.
     "publishedfileid"  "3725083668"
 
-    "contentfolder"    "/home/vortgo/projects/pzrc_m"
-    "previewfile"      "/home/vortgo/projects/pzrc_m/preview.png"
+    // contentfolder must be the staged item tree (mods/pzrc_m/...), NOT the
+    // repo root. Run ./tools/build_workshop.sh first to populate build/workshop.
+    "contentfolder"    "/home/vortgo/projects/pzrc_m/build/workshop"
+    "previewfile"      "/home/vortgo/projects/pzrc_m/build/workshop/preview.png"
     "visibility"       "0"
 
     "title"            "PZRC Mod"
