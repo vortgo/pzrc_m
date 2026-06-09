@@ -4,7 +4,7 @@
 
     // Workshop ID is filled in by Steam after the FIRST publish.
     // Leave 0 to create a new entry; set the assigned ID for updates.
-    "publishedfileid"  "0"
+    "publishedfileid"  "3725083668"
 
     "contentfolder"    "/home/vortgo/projects/pzrc_m"
     "previewfile"      "/home/vortgo/projects/pzrc_m/preview.png"
@@ -13,7 +13,7 @@
     "title"            "PZRC Mod"
     "description"      "Standalone server-side toolkit for PZ B42 Multiplayer: starter kit crate, ration fridge, dynamic radio events, library, infinite generator, fuel pump refill, and a welcome note. All logic ships inside the mod — no manual file drops to ~/Zomboid/Lua/ required."
 
-    "changenote"       "0.4.4 — Closed the second context-menu path: ISVehicleMenu.OnFillWorldObjectContextMenu finds the vehicle via direct IsoObjectPicker.Instance:PickVehicle(x, y) bypassing worldobjects, so the 0.4.2 createMenu filter didn't catch it. Now wrapping ISVehicleMenu.FillMenuOutsideVehicle too — third-party mods that hook it (e.g. Vehicle Repair Overhaul's 'Утилизировать транспорт', 10YrsVehicles add-ons) are fully blocked for non-owners, no greyed options, no menu lines, nothing. // 0.4.3 — Deferred wrap installation to OnGameStart for load-order safety. // 0.4.2 — Right-click filter on createMenu. // 0.4.1 — Nested-container fix. // 0.4.0 — Safe-zone vehicle-claim, damage protection, library, FuelPump, abandoned-vehicle event."
+    "changenote"       "0.4.5 — World-map crash fix: ISWorldMap.ShowWorldMap wrappers (SafeZoneMarker + EventCommands) now forward args verbatim via (...) instead of a fixed (playerNum, centerX, centerY, zoom) signature. The paper-map read path (ISReadWorldMap) calls ShowWorldMap with a different arg set, so the old wrapper dropped an argument and vanilla initDataAndStyle crashed. Marker render is now pcall-guarded too. // 0.4.4 — Closed the second context-menu path: ISVehicleMenu.OnFillWorldObjectContextMenu finds the vehicle via direct IsoObjectPicker.Instance:PickVehicle(x, y) bypassing worldobjects, so the 0.4.2 createMenu filter didn't catch it. Now wrapping ISVehicleMenu.FillMenuOutsideVehicle too — third-party mods that hook it (e.g. Vehicle Repair Overhaul's 'Утилизировать транспорт', 10YrsVehicles add-ons) are fully blocked for non-owners, no greyed options, no menu lines, nothing. // 0.4.3 — Deferred wrap installation to OnGameStart for load-order safety. // 0.4.2 — Right-click filter on createMenu. // 0.4.1 — Nested-container fix. // 0.4.0 — Safe-zone vehicle-claim, damage protection, library, FuelPump, abandoned-vehicle event."
 
     "tags"
     {

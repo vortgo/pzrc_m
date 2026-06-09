@@ -69,9 +69,12 @@ local function patchWorldMap()
     if not ISWorldMap or not ISWorldMap.ShowWorldMap then return end
 
     local orig = ISWorldMap.ShowWorldMap
-    ISWorldMap.ShowWorldMap = function(playerNum, centerX, centerY, zoom)
-        orig(playerNum, centerX, centerY, zoom)
-        PZRC_SafeZoneMarker.render()
+    -- Forward args verbatim (...) — the map-item read path (ISReadWorldMap)
+    -- calls ShowWorldMap with a different arg set than opening the map with M;
+    -- a fixed signature would drop args and break vanilla initDataAndStyle.
+    ISWorldMap.ShowWorldMap = function(...)
+        orig(...)
+        pcall(PZRC_SafeZoneMarker.render)
     end
     PZRC_SafeZoneMarker._patched = true
     log("ISWorldMap patched")

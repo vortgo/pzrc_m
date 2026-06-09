@@ -115,10 +115,14 @@ local function patchWorldMap()
     if not ISWorldMap or not ISWorldMap.ShowWorldMap then return end
 
     local orig = ISWorldMap.ShowWorldMap
-    ISWorldMap.ShowWorldMap = function(playerNum, centerX, centerY, zoom)
-        orig(playerNum, centerX, centerY, zoom)
+    -- Пробрасываем аргументы как есть (...) — чтение бумажной карты
+    -- (ISReadWorldMap) вызывает ShowWorldMap с другим набором аргументов,
+    -- чем открытие карты на M; фиксированная сигнатура теряла бы аргументы
+    -- и ломала vanilla initDataAndStyle.
+    ISWorldMap.ShowWorldMap = function(...)
+        orig(...)
         PZRC_EventMarkers.zonesCreated = false  -- пересоздаём маркеры при каждом открытии
-        PZRC_EventMarkers.renderMarkers()
+        pcall(PZRC_EventMarkers.renderMarkers)
     end
     PZRC_EventMarkers._showWorldMapPatched = true
     log("ISWorldMap patched for markers")
